@@ -2,8 +2,11 @@
  * utils used during static file generation
  */
 
+import fs from 'fs';
+import mkdirp from 'mkdirp';
 import path from 'path';
-import {config as config} from '../../../gulpfile.babel';
+
+const destination = 'dist';
 
 let tools = {};
 
@@ -56,8 +59,21 @@ tools.gatherRoutes = function (routes, parentPath) {
  * @param  {String} contents HTML contents of page
  */
 tools.render = function (page, contents) {
-	// config.prerender.dest
-	// TODO mkdirp and fs (interpolated) files
+
+	// replace trailing / with 'index.html'
+	if (page.match(/\/$/)) {
+		page += 'index.html';
+	}
+
+	// build a file path
+	let filePath = path.join(destination, page);
+
+	// create the directory
+	mkdirp.sync(path.dirname(filePath));
+
+	// write the file
+	fs.writeFileSync(filePath, contents);
+
 };
 
 export default tools;

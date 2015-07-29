@@ -1,6 +1,3 @@
-import * as jsx from 'node-jsx';
-jsx.install({ extension: '.jsx' });
-
 // modules
 import assemble from 'fabricator-assemble';
 import autoprefixer from 'gulp-autoprefixer';
@@ -45,8 +42,6 @@ const config = {
 	},
 	dev: gutil.env.dev
 };
-
-export {config as config};
 
 
 // clean
