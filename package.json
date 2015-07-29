@@ -2,7 +2,9 @@
   "author": "Dynamit",
   "scripts": {
     "gulp": "gulp",
+    "http-server": "http-server",
     "prestart": "npm install",
+    "preview": "npm run build && http-server dist",
     "build": "npm install && gulp",
     "start": "gulp --dev"
   },
@@ -25,8 +27,10 @@
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.0.4",
     "gulp-util": "^3.0.1",
+    "http-server": "^0.8.0",
     "imports-loader": "^0.6.4",
     "jshint-stylish": "^1.0.0",
+    "mkdirp": "^0.5.1",
     "node-jsx": "^0.13.3",
     "run-sequence": "^1.0.2",
     "scripts-loader": "^0.1.3",

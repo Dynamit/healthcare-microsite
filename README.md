@@ -16,6 +16,12 @@ Build for production:
 $ npm run build
 ```
 
+Preview the production build (using [http-server](https://www.npmjs.com/package/http-server)):
+
+```
+$ npm run preview
+```
+
 ## Overview
 
 The site is an isomorphic single-page React application that serves pre-rendered views.
