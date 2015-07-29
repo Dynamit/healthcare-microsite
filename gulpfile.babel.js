@@ -109,7 +109,7 @@ gulp.task('serve', () => {
 
 	browserSync({
 		server: {
-			baseDir: config.templates.dest
+			baseDir: config.prerender.dest
 		},
 		notify: false,
 		logPrefix: 'BrowserSync'
@@ -136,7 +136,7 @@ gulp.task('serve', () => {
 	}
 
 	gulp.task('prerender:watch', ['prerender'], reload);
-	gulp.watch(config.templates.watch, ['prerender:watch']);
+	gulp.watch(config.prerender.watch, ['prerender:watch']);
 
 	gulp.task('styles:watch', ['styles']);
 	gulp.watch(config.styles.watch, ['styles:watch']);
