@@ -27,6 +27,9 @@ export default function (config) {
 			]
 		},
 		plugins: plugins,
+		resolve: {
+			extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx']
+		},
 		cache: {}
 	};
 

@@ -1,3 +1,6 @@
+import * as jsx from 'node-jsx';
+jsx.install({ extension: '.jsx' });
+
 // modules
 import assemble from 'fabricator-assemble';
 import autoprefixer from 'gulp-autoprefixer';
@@ -10,6 +13,7 @@ import gutil from 'gulp-util';
 import imagemin from 'gulp-imagemin';
 import jshint from 'gulp-jshint';
 import path from 'path';
+import prerender from './src/app/util/prerender';
 import runSequence from 'run-sequence';
 import sass from 'gulp-sass';
 import stylish from 'jshint-stylish';
@@ -18,18 +22,15 @@ import webpack from 'webpack';
 
 // configuration
 const config = {
-	templates: {
-		src: ['src/templates/**/*', '!src/templates/+(layouts|components)/**'],
+	prerender: {
+		src: './src/app/util/prerender.js',
 		dest: 'dist',
-		watch: ['src/templates/**/*', 'src/data/**/*.json'],
-		layouts: 'src/templates/layouts/*',
-		partials: ['src/templates/components/**/*'],
-		data: 'src/data/**/*.{json,yml}'
+		watch: 'src/app/**/*'
 	},
 	scripts: {
-		src: './src/assets/scripts/main.js',
+		src: './src/app/index.js',
 		dest: 'dist/assets/scripts',
-		watch: 'src/assets/scripts/**/*'
+		watch: 'src/app/**/*'
 	},
 	styles: {
 		src: 'src/assets/styles/main.scss',
@@ -45,6 +46,8 @@ const config = {
 	dev: gutil.env.dev
 };
 
+export {config as config};
+
 
 // clean
 gulp.task('clean', (cb) => {
@@ -52,21 +55,9 @@ gulp.task('clean', (cb) => {
 });
 
 
-// templates
-gulp.task('templates', (done) => {
-	assemble({
-		layouts: config.templates.layouts,
-		views: config.templates.src,
-		materials: config.templates.partials,
-		data: config.templates.data,
-		keys: {
-			views: 'templates',
-			materials: 'components'
-		},
-		dest: config.templates.dest,
-		logErrors: config.dev,
-		helpers: {}
-	});
+// static page generation
+gulp.task('prerender', (done) => {
+	prerender();
 	done();
 });
 
@@ -91,13 +82,6 @@ gulp.task('scripts', (done) => {
 	});
 });
 
-gulp.task('jshint', (done) => {
-	return gulp.src(config.scripts.watch)
-		.pipe(jshint())
-		.pipe(jshint.reporter(stylish))
-		.pipe(jshint.reporter('fail'))
-		.on('error', done);
-});
 
 // styles
 gulp.task('styles', () => {
@@ -125,7 +109,7 @@ gulp.task('images', () => {
 
 // server
 gulp.task('serve', () => {
-	
+
 	let reload = browserSync.reload;
 
 	browserSync({
@@ -136,7 +120,7 @@ gulp.task('serve', () => {
 		logPrefix: 'BrowserSync'
 	});
 
-	
+
 	/**
 	 * Because webpackCompiler.watch() isn't being used
 	 * manually remove the changed file path from the cache
@@ -155,9 +139,9 @@ gulp.task('serve', () => {
 			delete webpackConfig.cache[matchedKey];
 		}
 	}
-	
-	gulp.task('assemble:watch', ['assemble'], reload);
-	gulp.watch(config.templates.watch, ['assemble:watch']);
+
+	gulp.task('prerender:watch', ['prerender'], reload);
+	gulp.watch(config.templates.watch, ['prerender:watch']);
 
 	gulp.task('styles:watch', ['styles']);
 	gulp.watch(config.styles.watch, ['styles:watch']);
@@ -171,13 +155,12 @@ gulp.task('serve', () => {
 });
 
 
-
 // default build task
-gulp.task('default', ['clean', 'jshint'], () => {
+gulp.task('default', ['clean'], () => {
 
 	// define build tasks
 	let tasks = [
-		'templates',
+		'prerender',
 		'scripts',
 		'styles',
 		'images'
