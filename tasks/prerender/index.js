@@ -8,9 +8,9 @@ jsx.install({ extension: '.jsx' });
 
 import React from 'react';
 import Router from 'react-router';
-import routes from '../Routes';
+import routes from '../../src/app/Routes';
 import tools from './prerender-tools';
-import Layout from '../components/Layout';
+import Layout from '../../src/app/components/Layout';
 
 export default () => {
 
@@ -24,10 +24,10 @@ export default () => {
 	// TODO create mechanism to respect slugs/context-specic views
 
 	// render each page
-	pages.forEach(function (page) {
+	pages.forEach(page => {
 
 		// match routes
-		Router.run(routes, page, function (Handler, state) {
+		Router.run(routes, page, (Handler, state) => {
 
 			// get the compiled route component
 			let routePayload = React.createFactory(Handler)();

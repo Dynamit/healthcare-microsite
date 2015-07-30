@@ -53,6 +53,16 @@ tools.gatherRoutes = function (routes, parentPath) {
 
 
 /**
+ * [interpolate description]
+ * @return {[type]} [description]
+ */
+tools.interpolate = function () {
+	// TODO interpolate :slug in path name
+	// Add to pages array
+};
+
+
+/**
  * Write the html to a file
  * @param  {String} dir      Destination directory
  * @param  {String} page     Name of the page

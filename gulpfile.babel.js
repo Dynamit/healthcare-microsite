@@ -3,6 +3,7 @@ import assemble from 'fabricator-assemble';
 import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
 import csso from 'gulp-csso';
+import data from './tasks/data';
 import del from 'del';
 import gulp from 'gulp';
 import gulpif from 'gulp-if';
@@ -10,7 +11,7 @@ import gutil from 'gulp-util';
 import imagemin from 'gulp-imagemin';
 import jshint from 'gulp-jshint';
 import path from 'path';
-import prerender from './src/app/util/prerender';
+import prerender from './tasks/prerender';
 import runSequence from 'run-sequence';
 import sass from 'gulp-sass';
 import stylish from 'jshint-stylish';
@@ -19,6 +20,10 @@ import webpack from 'webpack';
 
 // configuration
 const config = {
+	data: {
+		articles: 'src/data/article/*.md',
+		dest: 'dist/data'
+	},
 	prerender: {
 		src: './src/app/util/prerender.js',
 		dest: 'dist',
@@ -50,8 +55,14 @@ gulp.task('clean', (cb) => {
 });
 
 
+// compile data
+gulp.task('data', (done) => {
+	data(config.data.articles, config.data.dest + '/article', config.data.dest);
+	done();
+});
+
 // static page generation
-gulp.task('prerender', (done) => {
+gulp.task('prerender', ['data'], (done) => {
 	prerender();
 	done();
 });
