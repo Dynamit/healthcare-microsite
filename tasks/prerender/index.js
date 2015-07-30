@@ -11,6 +11,11 @@ import Router from 'react-router';
 import routes from '../../src/app/Routes';
 import tools from './prerender-tools';
 import Layout from '../../src/app/components/Layout';
+import fs from 'fs';
+
+// get article meta data
+const articles = JSON.parse(fs.readFileSync('./dist/data/article.json', 'utf-8'));
+
 
 export default () => {
 
@@ -20,8 +25,8 @@ export default () => {
 	// get an array of routes
 	let pages = tools.gatherRoutes(routes);
 
-	// TODO interpolate article views to replace :slug with real slug
-	// TODO create mechanism to respect slugs/context-specic views
+	// interpolate article views to replace :slug with real slug
+	pages = tools.interpolate(pages, '/article/:slug', articles);
 
 	// render each page
 	pages.forEach(page => {

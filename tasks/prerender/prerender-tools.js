@@ -56,9 +56,26 @@ tools.gatherRoutes = function (routes, parentPath) {
  * [interpolate description]
  * @return {[type]} [description]
  */
-tools.interpolate = function () {
+tools.interpolate = function (paths, forPath, values) {
 	// TODO interpolate :slug in path name
 	// Add to pages array
+	let interpolated = [];
+
+
+	paths.forEach(p => {
+
+		if (p === forPath) {
+			values.forEach(value => {
+				interpolated.push(p.replace(path.basename(p), value.slug));
+			});
+		} else {
+			interpolated.push(p);
+		}
+
+	});
+
+	return interpolated;
+
 };
 
 
@@ -72,11 +89,11 @@ tools.render = function (page, contents) {
 
 	// replace trailing / with 'index.html'
 	if (page.match(/\/$/)) {
-		page += 'index.html';
+		page += 'index';
 	}
 
 	// build a file path
-	let filePath = path.join(destination, page);
+	let filePath = path.join(destination, page + '.html');
 
 	// create the directory
 	mkdirp.sync(path.dirname(filePath));
