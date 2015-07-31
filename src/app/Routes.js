@@ -14,7 +14,7 @@ import Article from './components/Article';
 const routes = (
 	<Route path="/" handler={Container}>
 		<DefaultRoute name="home" handler={Home} />
-		<Route name="article" path="article/:slug" handler={Article} />
+		<Route name="article" path="article/:slug/?" handler={Article} />
 	</Route>
 );
 

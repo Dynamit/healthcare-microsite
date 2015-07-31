@@ -50,20 +50,32 @@ const config = {
 
 
 // clean
-gulp.task('clean', (cb) => {
-	del(['dist'], cb);
+gulp.task('clean', (done) => {
+	del(['dist'], done);
 });
 
-
-// compile data
-gulp.task('data', (done) => {
-	data(config.data.articles, config.data.dest + '/article', config.data.dest);
-	done();
-});
 
 // static page generation
-gulp.task('prerender', ['data'], (done) => {
-	prerender();
+gulp.task('prerender', (done) => {
+	/**
+	 * Pre-render views
+	 * Accepts an object as option hash.
+	 */
+	prerender({
+		/**
+		 * Top-level data for pre-rendering.
+		 * @type {Object}
+		 */
+		data: {
+			/**
+			 * Article meta data.
+			 * Writes .json to disk; returns meta object.
+			 * Used to interpolate routes.
+			 * @type {Object}
+			 */
+			article: data(config.data.articles, config.data.dest + '/article', config.data.dest)
+		}
+	});
 	done();
 });
 
@@ -169,7 +181,7 @@ gulp.task('default', ['clean'], () => {
 		'prerender',
 		'scripts',
 		'styles',
-		'images'
+		// 'images'
 	];
 
 	// run build

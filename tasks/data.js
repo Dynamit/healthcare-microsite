@@ -82,4 +82,6 @@ export default (fileGlob, destination, metaDestination) => {
 	// write meta json file to metaDestination
 	fs.writeFileSync(path.join(metaDestination, metaFileName + '.json'), JSON.stringify(meta));
 
+	return meta;
+
 }

@@ -5,7 +5,7 @@ class Container extends React.Component {
 	render () {
 		return (
 			<div>
-				<RouteHandler />
+				<RouteHandler data={this.props.data} />
 			</div>
 		);
 	}
