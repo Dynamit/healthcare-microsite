@@ -20,6 +20,7 @@ const md = markdown({ html: true, linkify: true });
  * @param  {Array|String} fileGlob Glob of files
  * @param  {String} destination Where to save .json files
  * @param  {String} metaDestination Whether or not to create a meta file.
+ * @return {Object} meta data
  */
 export default (fileGlob, destination, metaDestination) => {
 

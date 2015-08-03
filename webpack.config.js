@@ -3,7 +3,11 @@ import webpack from 'webpack';
 
 export default function (config) {
 
-	let plugins = [];
+	let plugins = [
+		new webpack.DefinePlugin({
+			'process.API_URL': '/api/'
+		})
+	];
 
 	if (!config.dev) {
 		plugins.push(

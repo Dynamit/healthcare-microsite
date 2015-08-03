@@ -22,7 +22,7 @@ import webpack from 'webpack';
 const config = {
 	data: {
 		articles: 'src/data/article/*.md',
-		dest: 'dist/data'
+		dest: 'dist/api'
 	},
 	prerender: {
 		src: './src/app/util/prerender.js',
@@ -60,8 +60,9 @@ gulp.task('prerender', (done) => {
 	/**
 	 * Pre-render views
 	 * Accepts an object as option hash.
+	 * @returns a promise
 	 */
-	prerender({
+	return prerender({
 		/**
 		 * Top-level data for pre-rendering.
 		 * @type {Object}
@@ -76,7 +77,6 @@ gulp.task('prerender', (done) => {
 			article: data(config.data.articles, config.data.dest + '/article', config.data.dest)
 		}
 	});
-	done();
 });
 
 
@@ -158,8 +158,6 @@ gulp.task('serve', () => {
 		}
 	}
 
-	gulp.task('prerender:watch', ['prerender'], reload);
-	gulp.watch(config.prerender.watch, ['prerender:watch']);
 
 	gulp.task('styles:watch', ['styles']);
 	gulp.watch(config.styles.watch, ['styles:watch']);

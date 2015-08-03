@@ -6,7 +6,7 @@ import api from '../api';
 class Home extends React.Component {
 
 	static fetchData() {
-		return api.get('article.json');
+		return api.get('/article.json');
 	}
 
 	render () {
