@@ -16,7 +16,7 @@ Router.run(routes, Router.HistoryLocation, (Handler, state) => {
 	let promises = state.routes.filter(route => {
 		return route.handler.fetchData;
 	}).map(route => {
-		return route.handler.fetchData();
+		return route.handler.fetchData(state.params);
 	});
 
 	// listen for resolution, dispatch route

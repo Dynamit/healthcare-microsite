@@ -171,7 +171,7 @@ export default (opts) => {
 				return route.handler.fetchData;
 			}).map(route => {
 				// return the promise
-				return route.handler.fetchData();
+				return route.handler.fetchData(state.params);
 			});
 
 			// listen for resolutions, then render views
