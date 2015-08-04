@@ -1,0 +1,13 @@
+/**
+ * Color variable map
+ * based on: http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+ */
+$colors: (
+	overlay: rgba(0, 0, 0, .1),
+	white: rgb(255, 255, 255)
+);
+
+
+@function color($color) {
+    @return map-get($colors, $color);
+}

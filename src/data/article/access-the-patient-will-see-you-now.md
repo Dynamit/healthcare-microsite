@@ -2,7 +2,7 @@
 title: "Access: The Patient Will See You Now"
 author: Josh Amer
 date: 2015-07-12
-abstract: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis ullam suscipit repudiandae?
+abstract: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ---
 
 # Access: The Patient Will See You Now

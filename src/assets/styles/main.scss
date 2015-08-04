@@ -2,6 +2,9 @@
  * Main style sheet
  */
 
-body {
-	font-family: sans-serif;
-}
+@import 'variables/colors';
+
+@import 'base/normalize';
+@import 'base/layout';
+
+@import 'components/symbols';

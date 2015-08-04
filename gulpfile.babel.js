@@ -27,7 +27,7 @@ const config = {
 	prerender: {
 		src: './src/app/util/prerender.js',
 		dest: 'dist',
-		watch: 'src/app/**/*'
+		watch: ['src/app/**/*', 'src/data/**/*']
 	},
 	scripts: {
 		src: './src/app/index.js',
@@ -158,6 +158,8 @@ gulp.task('serve', () => {
 		}
 	}
 
+	gulp.task('prerender:watch', ['prerender'], reload);
+	gulp.watch(config.prerender.watch, ['prerender:watch']);
 
 	gulp.task('styles:watch', ['styles']);
 	gulp.watch(config.styles.watch, ['styles:watch']);
