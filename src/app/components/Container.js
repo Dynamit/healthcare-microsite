@@ -2,6 +2,7 @@ import React from 'react';
 import { RouteHandler, Navigation } from 'react-router';
 import Symbol from './Symbol';
 import mixin from 'react-mixin';
+import classNames from 'classnames';
 
 class Container extends React.Component {
 
@@ -11,7 +12,8 @@ class Container extends React.Component {
 
 		this.state = {
 			selectedArticle: 0,
-			isReading: false
+			isReading: false,
+			isNavigating: false
 		};
 
 	}
@@ -23,15 +25,22 @@ class Container extends React.Component {
 			backgroundImage: `url(/assets/images/${articleData.image})`
 		};
 
+		let containerClassnames = classNames({
+			'container': true,
+			'is-navigating': this.state.isNavigating,
+			'is-reading': this.state.isReading
+		});
+
 		return (
-			<div className="container" style={containerStyle}>
+			<div className={containerClassnames} style={containerStyle}>
 				<Symbol id="dynamit-logo" onClick={this._stopReading.bind(this)} />
-				<Symbol id="menu" />
+				<Symbol id="menu" onClick={this._toggleMenu.bind(this)} />
 				<RouteHandler
 					{...this.props}
 					selectedArticle={this.state.selectedArticle}
 					isReading={this.state.isReading}
-					handleSelectArticle={this._selectArticle.bind(this)} />
+					handleSelectArticle={this._selectArticle.bind(this)}
+					handleStartReading={this._startReading.bind(this)} />
 			</div>
 		);
 	}
@@ -46,12 +55,18 @@ class Container extends React.Component {
 		this.setState({ isReading: false }, () => {
 			this.transitionTo('/');
 		});
-
 	}
 
 	_startReading(e) {
 		e.preventDefault();
-		this.setState({ isReading: true });
+		this.setState({ isReading: true }, () => {
+			this.transitionTo(`/article/${this.props.data[this.state.selectedArticle].slug}`);
+		});
+	}
+
+	_toggleMenu(e) {
+		e.preventDefault();
+		this.setState({ isNavigating: !this.state.isNavigating })
 	}
 
 };

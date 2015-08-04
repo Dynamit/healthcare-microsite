@@ -29,10 +29,10 @@ class Home extends React.Component {
 			<div>
 				<div className="article-lede">
 					<h1 key={selectedArticle.slug}>
-						<Link to="article" params={{ slug: selectedArticle.slug }}>{selectedArticle.title}</Link>
+						<a href={`/article/${selectedArticle.slug}/`} onClick={this.props.handleStartReading}>{selectedArticle.title}</a>
 					</h1>
 					<p>{selectedArticle.abstract}</p>
-					<Link to="article" params={{ slug: selectedArticle.slug }}>Continue Reading</Link>
+					<a href={`/article/${selectedArticle.slug}/`} onClick={this.props.handleStartReading}>Continue Reading</a>
 				</div>
 				<ul className="article-menu">
 				{this.articleList.map((item, i) => {
@@ -60,5 +60,7 @@ class Home extends React.Component {
 	}
 
 };
+
+// <Link to="article" params={{ slug: selectedArticle.slug }}>{selectedArticle.title}</Link>
 
 export default Home;
