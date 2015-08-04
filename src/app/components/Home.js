@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import api from '../api';
+import Button from './Button';
 
 
 class Home extends React.Component {
@@ -27,12 +28,12 @@ class Home extends React.Component {
 
 		return (
 			<div>
-				<div className="article-lede">
+				<div className="article-lead">
 					<h1 key={selectedArticle.slug}>
 						<a href={`/article/${selectedArticle.slug}/`} onClick={this.props.handleStartReading}>{selectedArticle.title}</a>
 					</h1>
 					<p>{selectedArticle.abstract}</p>
-					<a href={`/article/${selectedArticle.slug}/`} onClick={this.props.handleStartReading}>Continue Reading</a>
+					<Button href={`/article/${selectedArticle.slug}/`} onClick={this.props.handleStartReading}>Continue Reading</Button>
 				</div>
 				<ul className="article-menu">
 				{this.articleList.map((item, i) => {
@@ -60,7 +61,5 @@ class Home extends React.Component {
 	}
 
 };
-
-// <Link to="article" params={{ slug: selectedArticle.slug }}>{selectedArticle.title}</Link>
 
 export default Home;

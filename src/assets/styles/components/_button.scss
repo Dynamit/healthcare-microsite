@@ -1,0 +1,21 @@
+.button {
+	display: inline-block;
+
+	.symbol {
+		float: right;
+		margin-top: 3px;
+		margin-left: 0.5em;
+		width: 1em;
+		fill: color(orange)
+	}
+
+	&-left {
+		.symbol {
+			float: left;
+			transform: rotate(180deg);
+			margin-top: 1px;
+			margin-left: 0;
+			margin-right: 0.5em;
+		}
+	}
+}

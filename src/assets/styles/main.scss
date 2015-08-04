@@ -4,7 +4,12 @@
 
 @import 'variables/colors';
 
-@import 'base/normalize';
-@import 'base/layout';
+@import 'mixins/type';
 
+@import 'base/normalize';
+@import 'base/foundation';
+
+@import 'components/article';
+@import 'components/button';
+@import 'components/container';
 @import 'components/symbols';

@@ -1,0 +1,12 @@
+.article-lead {
+	@include text-shadow;
+	color: color(white);
+
+	a {
+		&,
+		&:visited {
+			color: color(white);
+			text-decoration: none;
+		}
+	}
+}

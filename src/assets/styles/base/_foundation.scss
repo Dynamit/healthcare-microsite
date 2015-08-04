@@ -1,0 +1,13 @@
+body {
+	font-family: 'proxima-nova';
+	background-color: color(black);
+	color: color(black);
+}
+
+.button {
+	&,
+	&:visited {
+		color: color(white);
+		cursor: pointer;
+	}
+}

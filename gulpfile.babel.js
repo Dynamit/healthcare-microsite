@@ -181,7 +181,7 @@ gulp.task('default', ['clean'], () => {
 		'prerender',
 		'scripts',
 		'styles',
-		// 'images'
+		'images'
 	];
 
 	// run build
