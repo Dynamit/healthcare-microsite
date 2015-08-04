@@ -7,6 +7,13 @@ class Home extends React.Component {
 
 	constructor(props) {
 		super(props);
+		this.articleList = [
+			'Introduction',
+			'September 1',
+			'September 10',
+			'September 17',
+			'October 2'
+		]
 	}
 
 	static fetchData() {
@@ -27,13 +34,25 @@ class Home extends React.Component {
 					<p>{selectedArticle.abstract}</p>
 					<Link to="article" params={{ slug: selectedArticle.slug }}>Continue Reading</Link>
 				</div>
-				<ul>
-				{this.props.data.map((article, i) => {
-					return (
-						<li key={article.slug}>
-							<a href="#" onClick={this.props.handleSelectArticle.bind(this, i)}>{article.title}</a>
-						</li>
-					)
+				<ul className="article-menu">
+				{this.articleList.map((item, i) => {
+					// iterate through each possible article
+					// if an entry exists, show it's data
+					// else, show the placeholder
+					if (articles[i]) {
+						return (
+							<li key={i}>
+								<a href={`/article/${articles[i].slug}/`} onClick={this.props.handleSelectArticle.bind(this, i)}>{articles[i].title}</a>
+							</li>
+						);
+					} else {
+						return (
+							<li key={i}>
+								{item}
+							</li>
+						);
+					}
+
 				})}
 				</ul>
 			</div>

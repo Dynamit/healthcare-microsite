@@ -2,6 +2,7 @@
 title: Introduction
 author: Josh Amer
 date: 2015-07-01
+image: poster-00.jpg
 abstract: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis ullam suscipit repudiandae?
 ---
 

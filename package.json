@@ -4,7 +4,7 @@
     "gulp": "gulp",
     "http-server": "http-server",
     "prestart": "npm install",
-    "preview": "npm run build && http-server dist",
+    "preview": "npm run build && http-server dist -o",
     "build": "npm install && gulp",
     "start": "gulp --dev"
   },
@@ -39,6 +39,7 @@
     "mkdirp": "^0.5.1",
     "moment": "^2.10.6",
     "node-jsx": "^0.13.3",
+    "react-mixin": "^1.7.0",
     "react-router": "^0.13.3",
     "run-sequence": "^1.0.2",
     "scripts-loader": "^0.1.3",

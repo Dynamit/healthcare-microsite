@@ -34,8 +34,8 @@ const symbols = {
 
 class Symbol extends React.Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.symbols = symbols
 	}
 
@@ -52,8 +52,14 @@ class Symbol extends React.Component {
 			paddingBottom: `${height/width}%`
 		}
 
+		let containerProps = merge(this.props.containerNodeAttrs, {
+			className: containerClassname,
+			style: symbolStyle,
+			onClick: this.props.onClick
+		})
+
 		return (
-			React.createElement(this.props.containerNodeType, merge(this.props.containerNodeAttrs, { className: containerClassname, style: symbolStyle }),
+			React.createElement(this.props.containerNodeType, containerProps,
 				React.createElement('svg', { viewBox: viewbox, preserveAspectRatio: "xMinYMin meet"},
 					React.createElement('path', { d: path })))
 		);
@@ -63,7 +69,8 @@ class Symbol extends React.Component {
 // define default props
 Symbol.defaultProps = {
 	containerNodeType: 'div',
-	containerNodeAttrs: {}
+	containerNodeAttrs: {},
+	onClick: () => {}
 };
 
 export default Symbol;

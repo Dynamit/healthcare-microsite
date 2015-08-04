@@ -2,6 +2,7 @@
 title: "Access: The Patient Will See You Now"
 author: Josh Amer
 date: 2015-07-12
+image: poster-01.jpg
 abstract: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ---
 
