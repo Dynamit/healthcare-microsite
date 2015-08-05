@@ -20,16 +20,19 @@
 	top: 0;
 	right: 0;
 	z-index: 0;
-	width: calc(#{$menu-width} - 2em);
-	list-style-type: none;
-	margin: 0;
-	padding: 1em;
-	height: calc(100% - 2em);
+	width: $menu-width;
 	overflow: hidden;
+	height: 100%;
 
 	.is-navigating & {
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
+	}
+
+	&-list {
+		list-style-type: none;
+		margin: 0;
+		padding: 1em;
 	}
 
 	&-item {
@@ -96,6 +99,19 @@
 		letter-spacing: 0.05em;
 		display: none;
 	}
+}
 
+.util-links {
+	padding: 2em 1em 1em;
+	text-align: center;
 
+	a,
+	a:visited {
+		@include fz-s;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: color(gray);
+		text-decoration: none;
+		padding: 1em;
+	}
 }
