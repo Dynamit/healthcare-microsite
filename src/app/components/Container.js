@@ -106,18 +106,20 @@ class Container extends React.Component {
 					</div>
 
 					<div className="article-lead">
-						<h1 key={articleData.slug}>
-							<a href={`/article/${articleData.slug}/`} onClick={this._gotoArticle.bind(this)}>{articleData.title}</a>
-						</h1>
-						<p>{articleData.abstract}</p>
-						<Button
-							href={`/article/${articleData.slug}/`}
-							onClick={this._gotoArticle.bind(this)}>Continue Reading</Button>
-						<PrevNext
-							{...this.props}
-							items={this.articleList}
-							selectedArticle={this.state.selectedArticle}
-							handleSelectArticle={this._selectArticle.bind(this)} />
+						<div className="article-lead-inner">
+							<h1 key={articleData.slug}>
+								<a href={`/article/${articleData.slug}/`} onClick={this._gotoArticle.bind(this)}>{articleData.title}</a>
+							</h1>
+							<p>{articleData.abstract}</p>
+							<Button
+								href={`/article/${articleData.slug}/`}
+								onClick={this._gotoArticle.bind(this)}>Continue Reading</Button>
+							<PrevNext
+								{...this.props}
+								items={this.articleList}
+								selectedArticle={this.state.selectedArticle}
+								handleSelectArticle={this._selectArticle.bind(this)} />
+						</div>
 					</div>
 
 					<RouteHandler

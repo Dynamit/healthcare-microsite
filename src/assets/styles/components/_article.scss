@@ -10,8 +10,10 @@
 
 	@include breakpoint {
 		bottom: auto;
-		top: 35vh;
-		max-width: 30em;
+		// top: calc(50% + 1em);
+		top: 50vh;
+		transform: translateY(-50%);
+		width: 100%;
 	}
 
 	.is-reading & {
@@ -22,11 +24,22 @@
 		padding: 0;
 	}
 
+	&-inner {
+		max-width: $max-width;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
 	.prev-next {
 		display: none;
 	}
 
-	> h1 {
+	h1,
+	p {
+		max-width: 34em;
+	}
+
+	h1 {
 		margin: 0;
 
 		.is-reading & {
@@ -48,13 +61,13 @@
 		}
 	}
 
-	> .button {
+	.button {
 		.is-reading & {
 			display: none;
 		}
 	}
 
-	> p {
+	p {
 		padding-bottom: 1em;
 		border-bottom: 3px solid color(white);
 
