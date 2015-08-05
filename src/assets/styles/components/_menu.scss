@@ -54,11 +54,12 @@
 				position: absolute;
 				width: 100%;
 				text-align: center;
-				top: 50%;
+				top: calc(50% + 4px);
 				transform: translateY(-50%);
 
 				div:last-child {
 					font-size: 2em;
+					line-height: 1.2;
 				}
 			}
 		}
