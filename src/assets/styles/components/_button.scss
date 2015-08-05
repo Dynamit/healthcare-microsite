@@ -5,11 +5,12 @@
 	&:visited {
 		color: color(white);
 		cursor: pointer;
+		text-decoration: none;
 	}
 
 	.symbol {
 		float: right;
-		margin-top: 3px;
+		margin-top: 4px;
 		margin-left: 0.5em;
 		width: 1em;
 		fill: color(orange)
@@ -19,7 +20,6 @@
 		.symbol {
 			float: left;
 			transform: rotate(180deg);
-			margin-top: 1px;
 			margin-left: 0;
 			margin-right: 0.5em;
 		}

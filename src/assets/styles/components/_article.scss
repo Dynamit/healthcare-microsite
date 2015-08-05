@@ -17,6 +17,10 @@
 		padding: 0;
 	}
 
+	.prev-next {
+		display: none;
+	}
+
 	> h1 {
 		margin: 0;
 
@@ -61,6 +65,11 @@
 	margin-top: $poster-reading-height;
 	background-color: color(white);
 	padding: 3em 1em 1em;
+
+	.prev-next {
+		padding-top: 1em;
+		border-top: 1px solid color(light-gray);
+	}
 }
 
 .article-body {

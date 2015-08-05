@@ -1,0 +1,14 @@
+.prev-next {
+	@include clearfix;
+	width: 100%;
+
+	.button {
+		float: right;
+		color: color(black);
+		font-weight: 600;
+
+		&.button-left {
+			float: left;
+		}
+	}
+}

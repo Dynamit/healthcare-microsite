@@ -6,6 +6,7 @@ import Menu from './Menu';
 import mixin from 'react-mixin';
 import classNames from 'classnames';
 import api from '../api';
+import PrevNext from './PrevNext';
 
 class Container extends React.Component {
 
@@ -35,6 +36,7 @@ class Container extends React.Component {
 
 	_selectArticle(key, e) {
 		if (e) { e.preventDefault() }
+			console.log(key, e)
 		this.setState({ selectedArticle: key, isNavigating: false }, () => {
 			if (this.state.isReading) {
 				this._gotoArticle();
@@ -54,6 +56,16 @@ class Container extends React.Component {
 	}
 
 	_gotoArticle(e) {
+		if (e) { e.preventDefault() }
+		this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
+	}
+
+	_gotoPrevArticle(e) {
+		if (e) { e.preventDefault() }
+		this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
+	}
+
+	_gotoNextArticle(e) {
 		if (e) { e.preventDefault() }
 		this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
 	}
@@ -98,15 +110,23 @@ class Container extends React.Component {
 							<a href={`/article/${articleData.slug}/`} onClick={this._gotoArticle.bind(this)}>{articleData.title}</a>
 						</h1>
 						<p>{articleData.abstract}</p>
-						<Button href={`/article/${articleData.slug}/`} onClick={this._gotoArticle.bind(this)}>Continue Reading</Button>
+						<Button
+							href={`/article/${articleData.slug}/`}
+							onClick={this._gotoArticle.bind(this)}>Continue Reading</Button>
+						<PrevNext
+							{...this.props}
+							items={this.articleList}
+							selectedArticle={this.state.selectedArticle}
+							handleSelectArticle={this._selectArticle.bind(this)} />
 					</div>
 
 					<RouteHandler
 						{...this.props}
 						selectedArticle={this.state.selectedArticle}
 						isReading={this.state.isReading}
-						handleStartReading={this._startReading.bind(this)}
-						handleGotoArticle={this._gotoArticle.bind(this)} />
+						handleSelectArticle={this._selectArticle.bind(this)}
+						handleGotoArticle={this._gotoArticle.bind(this)}
+						handleStartReading={this._startReading.bind(this)} />
 
 				</div>
 
