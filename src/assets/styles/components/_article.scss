@@ -11,10 +11,10 @@
 	@include breakpoint {
 		bottom: auto;
 		top: 35vh;
+		max-width: 30em;
 	}
 
 	.is-reading & {
-		@include darken-overlay;
 		top: 0;
 		bottom: auto;
 		height: $poster-reading-height;

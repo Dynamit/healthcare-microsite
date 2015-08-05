@@ -1,10 +1,11 @@
 .container {
 	min-height: 100%;
 	position: relative;
+	background-color: color(black);
 }
 
 .body {
-	@include darken-overlay(50%);
+	@include darken-overlay;
 	background-position: center center;
 	background-size: cover;
 	position: absolute;

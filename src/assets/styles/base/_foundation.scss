@@ -10,7 +10,7 @@ html {
 
 body {
 	font-family: 'proxima-nova';
-	background-color: color(light-gray);
+	background-color: color(black);
 	color: color(black);
 	font-size: 100%;
 	line-height: 1.4;
@@ -21,7 +21,7 @@ h1 {
 	line-height: 1.2;
 
 	@include breakpoint {
-		font-size: 24pt;
+		font-size: 28pt;
 	}
 }
 

@@ -27,6 +27,7 @@
 	width: $menu-width;
 	overflow: hidden;
 	height: 100%;
+	background-color: color(light-gray);
 
 	@include breakpoint {
 		z-index: 100;
@@ -34,11 +35,18 @@
 		height: 10em;
 		top: auto;
 		bottom: 0;
+		background-color: transparent;
 	}
 
 	.is-navigating & {
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
+	}
+
+	.is-reading & {
+		@include breakpoint {
+			display: none;
+		}
 	}
 
 	&-list {
@@ -147,6 +155,7 @@
 			padding: 1em;
 			text-align: center;
 			top: calc(50% + 4px);
+			width: 100%;
 			left: 0;
 			transform: translateY(-50%);
 		}
@@ -187,12 +196,11 @@
 	a,
 	a:visited {
 		@include fz-s;
+		@include uppercase;
 		font-weight: 600;
-		text-transform: uppercase;
 		color: color(gray);
 		text-decoration: none;
 		padding: 1em;
-		letter-spacing: 0.075em;
 
 		@include breakpoint {
 			color: color(white);
