@@ -112,6 +112,7 @@ class Container extends React.Component {
 
 				<Menu
 					items={this.articleList}
+					selectedArticle={this.state.selectedArticle}
 					articles={this.props.data.meta}
 					handleSelectArticle={this._selectArticle.bind(this)} />
 

@@ -17,8 +17,7 @@
 
 	.is-navigating & {
 		transform: translate3d(-$menu-width, 0, 0);
-		z-index: 20000;
-		// overflow: hidden;
+		overflow: hidden;
 	}
 
 	.is-reading & {

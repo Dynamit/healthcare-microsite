@@ -1,5 +1,6 @@
 import React from 'react';
 import { sortBy } from 'lodash';
+import classNames from 'classnames';
 
 class Menu extends React.Component {
 
@@ -15,8 +16,14 @@ class Menu extends React.Component {
 				// if an entry exists, show it's data
 				// else, show the placeholder
 				if (articles[i]) {
+
+					let itemClasses = classNames({
+						'menu-item': true,
+						'is-selected': (this.props.selectedArticle === articles[i].slug)
+					});
+
 					return (
-						<li key={i} className="menu-item" onClick={this.props.handleSelectArticle.bind(this, articles[i].slug)}>
+						<li key={i} className={itemClasses} onClick={this.props.handleSelectArticle.bind(this, articles[i].slug)}>
 							<div className="menu-item-image" style={{ backgroundImage: `url(/assets/images/${articles[i].thumbnail})` }}></div>
 							<div className="menu-item-content">
 								<a href={`/article/${articles[i].slug}/`}
@@ -27,12 +34,17 @@ class Menu extends React.Component {
 							</div>
 						</li>
 					);
+
 				} else {
+
+					let placeholder = `<div>${item.split(' ')[0]}</div><div>${item.split(' ')[1]}</div>`;
+
 					return (
-						<li key={i} className="menu-item menu-item-unpublished">
-							{item}
+						<li key={i} className="menu-item is-unpublished">
+							<div className="menu-item-placeholder" dangerouslySetInnerHTML={{ __html: placeholder }}></div>
 						</li>
 					);
+
 				}
 			})}
 			</ul>

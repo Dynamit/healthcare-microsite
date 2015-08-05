@@ -36,6 +36,33 @@
 		margin-bottom: 1.5em;
 		position: relative;
 		cursor: pointer;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		&.is-unpublished {
+			background-color: color(overlay);
+			height: 10em;
+			cursor: default;
+
+			.menu-item-placeholder {
+				display: block;
+				position: absolute;
+				width: 100%;
+				text-align: center;
+				top: 50%;
+				transform: translateY(-50%);
+
+				div:last-child {
+					font-size: 2em;
+				}
+			}
+		}
+
+		&.is-selected {
+			box-shadow: 0 3px 0 0 color(teal);
+		}
 	}
 
 	&-item-image {
@@ -47,7 +74,7 @@
 	&-item-content {
 		background-color: color(white);
 		padding: 0.75em 1em;
-		height: 6em;
+		height: 5.5em;
 	}
 
 	&-item-title {
@@ -65,10 +92,10 @@
 	}
 
 	&-item-placeholder {
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
 		display: none;
 	}
 
-	&-item-unpublished {
 
-	}
 }
