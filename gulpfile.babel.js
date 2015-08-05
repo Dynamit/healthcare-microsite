@@ -38,7 +38,7 @@ const config = {
 		src: 'src/assets/styles/main.scss',
 		dest: 'dist/assets/styles',
 		watch: 'src/assets/styles/**/*',
-		browsers: ['last 1 version']
+		browsers: ['> 1%', 'last 2 versions']
 	},
 	images: {
 		src: 'src/assets/images/**/*',

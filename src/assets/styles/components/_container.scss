@@ -1,13 +1,12 @@
 .container {
-	min-height: 100vh;
+	min-height: 100%;
 	position: relative;
-	// overflow-x: hidden;
 }
 
 .body {
+	@include darken-overlay(50%);
 	background-position: center center;
 	background-size: cover;
-	transition: background 300ms;
 	position: absolute;
 	z-index: 1;
 	top: 0;
@@ -17,23 +16,32 @@
 	transition: transform 300ms;
 
 	.is-navigating & {
-		transform: translate3d(-250px, 0, 0);
+		transform: translate3d(-$menu-width, 0, 0);
+		z-index: 20000;
+		// overflow: hidden;
+	}
+
+	.is-reading & {
+		background-position: center -25vh;
 	}
 }
 
 .header {
 	@include clearfix;
-	padding: 1em;
+	position: relative;
+	z-index: 1;
+	position: absolute;
+	width: 100%;
 
-	> .symbol {
+	> .lockup {
+		float: left;
+		padding: 1em;
 		cursor: pointer;
 	}
 
-	> .dynamit-logo {
-		float: left;
-	}
-
-	> .menu-icon {
+	> .menu-toggle {
 		float: right;
+		padding: 1em;
+		cursor: pointer;
 	}
 }

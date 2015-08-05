@@ -1,9 +1,35 @@
 .article-lead {
 	@include text-shadow;
-	position: relative;
+	position: absolute;
 	z-index: 100;
+	bottom: 0;
+	left: 0;
 	color: color(white);
 	padding: 1em;
+	z-index: 0;
+
+	.is-reading & {
+		@include darken-overlay;
+		top: 0;
+		bottom: auto;
+		height: $poster-reading-height;
+		width: 100%;
+		padding: 0;
+	}
+
+	> h1 {
+		margin: 0;
+
+		.is-reading & {
+			position: absolute;
+			bottom: 0;
+			padding: 1rem;
+
+			a {
+				cursor: default;
+			}
+		}
+	}
 
 	a {
 		&,
@@ -12,12 +38,65 @@
 			text-decoration: none;
 		}
 	}
+
+	> .button {
+		.is-reading & {
+			display: none;
+		}
+	}
+
+	> p {
+		padding-bottom: 1em;
+		border-bottom: 3px solid color(white);
+
+		.is-reading & {
+			display: none;
+		}
+	}
 }
 
 .article {
 	position: relative;
 	z-index: 100;
-	margin-top: 200px;
+	margin-top: $poster-reading-height;
 	background-color: color(white);
 	padding: 1em;
+}
+
+.article-body {
+	img {
+		max-width: 100%;
+		margin: 0.5em 0 1em;
+	}
+}
+
+.author {
+	@include clearfix;
+	@include fz-s;
+	position: relative;
+	display: inline-block;
+	color: color(gray);
+
+	&-avatar {
+		position: absolute;
+		height: 100%;
+	}
+
+	&-details {
+		background-color: color(black);
+		float: left;
+		padding: 1em;
+		margin-left: 3.2em;
+	}
+
+	&-date {
+		font-weight: 400;
+		padding-left: 0.5em;
+	}
+
+	&-name {
+		color: color(white);
+		font-weight: 700;
+		padding-right: 0.5em;
+	}
 }

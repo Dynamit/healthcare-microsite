@@ -3,8 +3,20 @@ body {
 	background-color: color(light-gray);
 	color: color(black);
 	font-size: 100%;
+	line-height: 1.4;
 }
 
 h1 {
 	font-size: 18pt;
+	line-height: 1.2;
+}
+
+h2 {
+	font-size: 14pt;
+	margin-top: 1.25em;
+	margin-bottom: 0.5em;
+}
+
+p {
+	margin: 0.5em 0 1em;
 }

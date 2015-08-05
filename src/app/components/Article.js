@@ -23,10 +23,11 @@ class Article extends React.Component {
 						<Symbol id="linkedin-icon" containerNodeType="a" containerNodeAttrs={{ href: "#" }} />
 					</a>
 				</div>
-				<div className="post-author">
-					{article.author} &bull; {article.date.formatted}
+				<div className="author">
+					<img src={`/assets/images/${article.avatar}`} className="author-avatar" />
+					<div className="author-details"><span className="author-name">{article.author}</span>&bull;<span className="author-date">{article.date.formatted}</span></div>
 				</div>
-				<div dangerouslySetInnerHTML={{__html: article.content}} />
+				<div className="article-body" dangerouslySetInnerHTML={{__html: article.content}} />
 			</div>
 		);
 	}
