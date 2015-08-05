@@ -3,7 +3,9 @@
  */
 
 @import 'variables/colors';
+@import 'variables/components';
 
+@import 'mixins/display';
 @import 'mixins/type';
 
 @import 'base/normalize';
@@ -11,5 +13,6 @@
 
 @import 'components/article';
 @import 'components/button';
+@import 'components/menu';
 @import 'components/container';
 @import 'components/symbols';

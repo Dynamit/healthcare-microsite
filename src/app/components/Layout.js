@@ -20,11 +20,13 @@ class Layout extends React.Component {
 			<html>
 				<head>
 					<title>Hello</title>
+					<meta charSet="utf-8" />
+					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					<link rel="stylesheet" href="/assets/styles/main.css" />
 					<script src="//use.typekit.net/omf4gip.js"></script>
 					<script dangerouslySetInnerHTML={{__html: loadFonts}}></script>
 				</head>
-				<body dangerouslySetInnerHTML={{__html: this.props.markup}} />
+				<body dangerouslySetInnerHTML={{ __html: this.props.markup }} />
 				<script src="/assets/scripts/main.js" async></script>
 			</html>
 		);

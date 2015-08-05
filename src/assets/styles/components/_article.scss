@@ -1,6 +1,9 @@
 .article-lead {
 	@include text-shadow;
+	position: relative;
+	z-index: 100;
 	color: color(white);
+	padding: 1em;
 
 	a {
 		&,
@@ -9,4 +12,12 @@
 			text-decoration: none;
 		}
 	}
+}
+
+.article {
+	position: relative;
+	z-index: 100;
+	margin-top: 200px;
+	background-color: color(white);
+	padding: 1em;
 }

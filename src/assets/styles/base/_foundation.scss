@@ -1,13 +1,10 @@
 body {
 	font-family: 'proxima-nova';
-	background-color: color(black);
+	background-color: color(light-gray);
 	color: color(black);
+	font-size: 100%;
 }
 
-.button {
-	&,
-	&:visited {
-		color: color(white);
-		cursor: pointer;
-	}
+h1 {
+	font-size: 18pt;
 }

@@ -1,6 +1,39 @@
 .container {
-	height: 100vh;
+	min-height: 100vh;
+	position: relative;
+	// overflow-x: hidden;
+}
+
+.body {
 	background-position: center center;
 	background-size: cover;
 	transition: background 300ms;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: transform 300ms;
+
+	.is-navigating & {
+		transform: translate3d(-250px, 0, 0);
+	}
+}
+
+.header {
+	@include clearfix;
+	padding: 1em;
+
+	> .symbol {
+		cursor: pointer;
+	}
+
+	> .dynamit-logo {
+		float: left;
+	}
+
+	> .menu-icon {
+		float: right;
+	}
 }

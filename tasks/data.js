@@ -28,7 +28,7 @@ export default (fileGlob, destination, metaDestination) => {
 	let files = globby.sync(fileGlob);
 
 	// create a meta data object
-	let meta = [];
+	let meta = {};
 
 	// get meta file name using name of parent folder
 	let metaFileName = path.dirname(files[0]).split(path.sep).pop();
@@ -51,14 +51,14 @@ export default (fileGlob, destination, metaDestination) => {
 		// format the date
 		data.date = {
 			raw: data.date,
-			formatted: moment(data.date).format('MMM D')
+			formatted: moment(data.date).format('D MMM YYYY')
 		}
 
 		// save a slug
 		data.slug = name;
 
 		// push to meta
-		meta.push(data);
+		meta[name] = data;
 
 		// parse markdown
 		let content = yfm.content;
@@ -75,10 +75,6 @@ export default (fileGlob, destination, metaDestination) => {
 		fs.writeFileSync(filePath, fileContents);
 
 	});
-
-
-	// sort meta based on date
-	meta = sortBy(meta, 'date.raw');
 
 	// write meta json file to metaDestination
 	fs.writeFileSync(path.join(metaDestination, metaFileName + '.json'), JSON.stringify(meta));

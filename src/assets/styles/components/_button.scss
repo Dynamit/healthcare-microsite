@@ -1,6 +1,12 @@
 .button {
 	display: inline-block;
 
+	&,
+	&:visited {
+		color: color(white);
+		cursor: pointer;
+	}
+
 	.symbol {
 		float: right;
 		margin-top: 3px;

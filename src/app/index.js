@@ -23,7 +23,7 @@ Router.run(routes, Router.HistoryLocation, (Handler, state) => {
 	Promise.all(promises).then(data => {
 
 		// get the compiled route component
-		let routePayload = React.createElement(Handler, {data: data[0]});
+		let routePayload = React.createElement(Handler, { data: { meta: data[0], article: data[1] } });
 
 		// render route payload
 		React.render(routePayload, document.body);

@@ -2,10 +2,6 @@
  * Interrogate routes and generate static HTML files
  */
 
-// shim jsx and es6 importing
-import * as jsx from 'node-jsx';
-jsx.install({ extension: '.jsx' });
-
 import fs from 'fs';
 import mkdirp from 'mkdirp';
 import path from 'path';
@@ -102,8 +98,8 @@ tools.interpolate = function (paths, forPath, values) {
 		p = p.replace(/\/\?$/, '');
 
 		if (p === forPath) {
-			values.forEach(value => {
-				interpolated.push(p.replace(path.basename(p), value.slug));
+			Object.keys(values).forEach(value => {
+				interpolated.push(p.replace(path.basename(p), values[value].slug));
 			});
 		} else {
 			interpolated.push(p);
@@ -177,19 +173,27 @@ export default (opts) => {
 			// listen for resolutions, then render views
 			Promise.all(promises).then(data  => {
 
-				// get the compiled route component
-				let routePayload = React.createElement(Handler, {data: data[0]});
+				try {
 
-				// wrap the route payload in the Layout; render
-				let html = React.renderToStaticMarkup(layout({
-					markup: React.renderToString(routePayload)
-				}));
+					// get the compiled route component
+					let routePayload = React.createElement(Handler, { data: { meta: data[0], article: data[1] } });
 
-				// render route payload
-				tools.render(page, html);
+					// wrap the route payload in the Layout; render
+					let html = React.renderToStaticMarkup(layout({
+						markup: React.renderToString(routePayload)
+					}));
 
-				// resolve the promise
-				resolve();
+					// render route payload
+					tools.render(page, html);
+
+					// resolve the promise
+					resolve();
+
+				} catch(e) {
+					console.error(e.stack);
+					process.exit();
+					reject();
+				}
 
 			});
 
@@ -211,11 +215,7 @@ export default (opts) => {
 			// so we can make async calls to data sources
 			let pagePromises = pages.map(page => {
 				return new Promise((resolve, reject) => {
-					try {
-						parsePage(page, resolve);
-					} catch (e) {
-						reject(e);
-					}
+					parsePage(page, resolve);
 				});
 			});
 
