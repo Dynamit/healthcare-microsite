@@ -1,3 +1,13 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
 body {
 	font-family: 'proxima-nova';
 	background-color: color(light-gray);
@@ -9,12 +19,20 @@ body {
 h1 {
 	font-size: 18pt;
 	line-height: 1.2;
+
+	@include breakpoint {
+		font-size: 24pt;
+	}
 }
 
 h2 {
 	font-size: 14pt;
 	margin-top: 1.25em;
 	margin-bottom: 0.5em;
+
+	@include breakpoint {
+		font-size: 18pt;
+	}
 }
 
 p {

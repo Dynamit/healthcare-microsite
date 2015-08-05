@@ -8,6 +8,11 @@
 	padding: 1em;
 	z-index: 0;
 
+	@include breakpoint {
+		bottom: auto;
+		top: 35vh;
+	}
+
 	.is-reading & {
 		@include darken-overlay;
 		top: 0;

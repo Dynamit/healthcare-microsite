@@ -4,6 +4,10 @@
 
 .dynamit-logo {
 	width: 100px;
+
+	@include breakpoint {
+		width: 120px;
+	}
 }
 
 .menu-icon {

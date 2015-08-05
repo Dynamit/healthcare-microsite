@@ -5,3 +5,8 @@
 @mixin fz-s {
 	font-size: 0.875em;
 }
+
+@mixin uppercase {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
