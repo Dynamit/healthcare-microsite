@@ -48,13 +48,9 @@ class Symbol extends React.Component {
 		let height = symbol.viewbox.split(' ')[3];
 
 		let containerClassname = `symbol ${this.props.id}`;
-		let symbolStyle = {
-			paddingBottom: `${height/width}%`
-		}
 
 		let containerProps = merge(this.props.containerNodeAttrs, {
 			className: containerClassname,
-			style: symbolStyle,
 			onClick: this.props.onClick
 		})
 

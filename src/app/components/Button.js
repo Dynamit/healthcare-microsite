@@ -1,5 +1,4 @@
 import React from 'react';
-import api from '../api';
 import Symbol from './Symbol';
 import classNames from 'classnames';
 

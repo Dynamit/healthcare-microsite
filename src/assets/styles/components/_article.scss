@@ -60,7 +60,7 @@
 	z-index: 100;
 	margin-top: $poster-reading-height;
 	background-color: color(white);
-	padding: 1em;
+	padding: 3em 1em 1em;
 }
 
 .article-body {
@@ -85,18 +85,17 @@
 	&-details {
 		background-color: color(black);
 		float: left;
-		padding: 1em;
-		margin-left: 3.2em;
+		padding: 0.75em;
+		margin-left: 2.75em;
 	}
 
 	&-date {
-		font-weight: 400;
 		padding-left: 0.5em;
 	}
 
 	&-name {
 		color: color(white);
-		font-weight: 700;
+		font-weight: 600;
 		padding-right: 0.5em;
 	}
 }

@@ -1,0 +1,38 @@
+.social {
+	@include clearfix;
+	margin-bottom: 2em;
+	position: absolute;
+	top: 1.5em;
+	right: 1em;
+
+	.symbol {
+		width: 1em;
+		height: 1em;
+		float: left;
+		margin-right: 1em;
+		position: relative;
+		text-align: center;
+		fill: color(gray);
+		cursor: pointer;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		svg {
+			height: 1em;
+		}
+	}
+
+	.linkedin-icon {
+		fill: color(linkedin);
+	}
+
+	.twitter-icon {
+		fill: color(twitter);
+	}
+
+	.facebook-icon {
+		fill: color(facebook);
+	}
+}
