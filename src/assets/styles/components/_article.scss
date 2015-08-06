@@ -125,7 +125,7 @@
 		display: none;
 
 		@include breakpoint {
-			display: block;
+			display: inline-block;
 		}
 	}
 

@@ -57,16 +57,24 @@ class Container extends React.Component {
 	_gotoArticle(e) {
 		if (e) { e.preventDefault() }
 		this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
+		this._scrollToTop();
 	}
 
 	_gotoPrevArticle(e) {
 		if (e) { e.preventDefault() }
 		this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
+		this._scrollToTop();
 	}
 
 	_gotoNextArticle(e) {
 		if (e) { e.preventDefault() }
 		this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
+		this._scrollToTop();
+	}
+
+	_scrollToTop() {
+		React.findDOMNode(this.refs.Handler).scrollTop = 0;
+		window.scrollTo(0,0);
 	}
 
 	_toggleMenu(e) {
@@ -122,6 +130,7 @@ class Container extends React.Component {
 					</div>
 
 					<RouteHandler
+						ref="Handler"
 						{...this.props}
 						selectedArticle={this.state.selectedArticle}
 						isReading={this.state.isReading}
