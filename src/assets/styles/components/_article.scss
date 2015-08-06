@@ -11,9 +11,9 @@
 
 	@include breakpoint {
 		bottom: auto;
-		top: 50vh;
-		transform: translateY(-50%);
+		bottom: 36vh;
 		width: 100%;
+		padding: 1em 4em;
 	}
 
 	.is-reading & {
@@ -29,12 +29,6 @@
 			transform: none;
 			padding: 2rem 3rem;
 		}
-	}
-
-	&-inner {
-		max-width: $max-width;
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	.prev-next {
@@ -138,6 +132,11 @@
 			display: none;
 		}
 	}
+}
+
+.measure {
+	max-width: 37.5em;
+	margin: 0 auto;
 }
 
 .article-body {
