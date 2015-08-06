@@ -6,6 +6,8 @@ import React from 'react';
 import Router from 'react-router';
 import routes from './Routes';
 
+require('babel-core/polyfill');
+
 // for Chrome Dev Tools support
 window.React = React;
 

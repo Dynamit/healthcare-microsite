@@ -11,8 +11,6 @@
 	}
 
 	.symbol {
-		width: 1em;
-		height: 1em;
 		float: left;
 		margin-right: 1em;
 		position: relative;
@@ -35,6 +33,7 @@
 
 	.twitter-icon {
 		fill: color(twitter);
+		margin-top: 2px;
 	}
 
 	.facebook-icon {

@@ -1,4 +1,8 @@
 .symbol {
+	@include icon(1em);
+	display: inline-block;
+	vertical-align: middle;
+
 	fill: color(white);
 }
 

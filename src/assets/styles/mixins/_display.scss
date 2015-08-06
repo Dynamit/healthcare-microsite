@@ -24,3 +24,23 @@
 		background-color: rgba(color(black), $val);
 	}
 }
+
+
+@mixin svg {
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+
+@mixin icon($size) {
+	@include svg;
+	width: $size;
+	height: $size;
+
+	&,
+	&:not(:root) {
+		overflow: visible;
+	}
+}

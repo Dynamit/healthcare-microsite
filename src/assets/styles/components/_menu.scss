@@ -60,9 +60,10 @@
 			left: 0;
 			bottom: 0;
 			padding: 0;
+			background-color: color(overlay);
 
 			&:hover {
-				background-color: color(overlay);
+
 			}
 		}
 	}

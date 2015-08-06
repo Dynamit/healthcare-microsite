@@ -74,7 +74,8 @@
 		}
 	}
 
-	a {
+	a,
+	.button {
 		&,
 		&:visited {
 			color: color(white);
@@ -142,7 +143,7 @@
 .article-body {
 	img {
 		max-width: 100%;
-		margin: 0.5em 0 1em;
+		margin: 0.5em auto 1em;
 	}
 }
 
@@ -156,6 +157,8 @@
 	&-avatar {
 		position: absolute;
 		height: 100%;
+		left: 0;
+		top: 0;
 	}
 
 	&-details {

@@ -8,6 +8,11 @@ html {
 	box-sizing: inherit;
 }
 
+html,
+body {
+	height: 100%;
+}
+
 body {
 	font-family: 'proxima-nova';
 	background-color: color(black);
