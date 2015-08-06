@@ -10,7 +10,6 @@
 
 	@include breakpoint {
 		bottom: auto;
-		// top: calc(50% + 1em);
 		top: 50vh;
 		transform: translateY(-50%);
 		width: 100%;

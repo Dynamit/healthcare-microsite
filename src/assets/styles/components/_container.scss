@@ -16,10 +16,6 @@
 	height: 100%;
 	transition: transform 300ms;
 
-	@include breakpoint {
-		// z-index: 200;
-	}
-
 	.is-navigating & {
 		transform: translate3d(-$menu-width, 0, 0);
 		overflow: hidden;
@@ -43,7 +39,7 @@
 		cursor: pointer;
 
 		@include breakpoint {
-			padding: 1.5em;
+			padding: 2em;
 		}
 	}
 

@@ -80,6 +80,10 @@
 
 			&:not(.is-unpublished):hover {
 				box-shadow: inset 0 -3px 0 0 color(teal);
+
+				.menu-item-image {
+					display: block;
+				}
 			}
 		}
 
@@ -126,7 +130,12 @@
 		background-size: cover;
 
 		@include breakpoint {
+			@include darken-overlay;
+			position: absolute;
+			width: 100%;
+			height: 100%;
 			display: none;
+			z-index: -1;
 		}
 	}
 
@@ -190,7 +199,7 @@
 		position: fixed;
 		top: 0;
 		right: 0;
-		padding: 1.5em;
+		padding: 2em;
 	}
 
 	a,
