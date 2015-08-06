@@ -23,6 +23,10 @@
 
 	.is-reading & {
 		background-position: center -25vh;
+
+		@include breakpoint {
+			background-position: -25vw center;
+		}
 	}
 }
 

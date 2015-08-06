@@ -7,6 +7,7 @@
 	color: color(white);
 	padding: 1em;
 	z-index: 0;
+	width: 100%;
 
 	@include breakpoint {
 		bottom: auto;
@@ -102,7 +103,7 @@
 	z-index: 100;
 	margin-top: $poster-reading-height;
 	background-color: color(white);
-	padding: 3em 1em 1em;
+	padding: 1em;
 
 	@include breakpoint {
 		position: absolute;
@@ -118,6 +119,14 @@
 	.button {
 		color: color(black);
 		font-weight: 600;
+	}
+
+	.hide-button {
+		display: none;
+
+		@include breakpoint {
+			display: block;
+		}
 	}
 
 	.prev-next {

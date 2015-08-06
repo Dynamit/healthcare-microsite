@@ -21,7 +21,7 @@ class Article extends React.Component {
 
 		return (
 			<div className="article">
-				<Button onClick={this.props.handleStopReading}>Hide</Button>
+				<Button onClick={this.props.handleStopReading} className="hide-button">Hide</Button>
 				<Social />
 				<div className="mt-l pt mb">
 					<div className="author">

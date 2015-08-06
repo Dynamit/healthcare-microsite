@@ -10,7 +10,7 @@ class Button extends React.Component {
 			button: true,
 			'button-left': this.props.direction === 'left',
 			'button-right': this.props.direction === 'right'
-		})
+		}, this.props.className)
 
 		return (
 			<a href={this.props.href} onClick={this.props.onClick} className={buttonClass}>
