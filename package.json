@@ -39,6 +39,7 @@
     "markdown-it": "^4.4.0",
     "mkdirp": "^0.5.1",
     "moment": "^2.10.6",
+    "oocss-utils": "^0.2.2",
     "react-mixin": "^1.7.0",
     "react-router": "^0.13.3",
     "run-sequence": "^1.0.2",

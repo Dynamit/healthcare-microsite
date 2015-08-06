@@ -36,7 +36,6 @@ class Container extends React.Component {
 
 	_selectArticle(key, e) {
 		if (e) { e.preventDefault() }
-			console.log(key, e)
 		this.setState({ selectedArticle: key, isNavigating: false }, () => {
 			if (this.state.isReading) {
 				this._gotoArticle();
@@ -128,7 +127,8 @@ class Container extends React.Component {
 						isReading={this.state.isReading}
 						handleSelectArticle={this._selectArticle.bind(this)}
 						handleGotoArticle={this._gotoArticle.bind(this)}
-						handleStartReading={this._startReading.bind(this)} />
+						handleStartReading={this._startReading.bind(this)}
+						handleStopReading={this._stopReading.bind(this)} />
 
 				</div>
 

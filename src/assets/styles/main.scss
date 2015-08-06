@@ -5,6 +5,8 @@
 @import 'variables/colors';
 @import 'variables/components';
 
+@import '../../../node_modules/oocss-utils/utils';
+
 @import 'mixins/display';
 @import 'mixins/type';
 @import 'mixins/breakpoint';
