@@ -20,6 +20,7 @@
 		top: 0;
 		bottom: auto;
 		height: $poster-reading-height;
+		padding: 0;
 
 		@include breakpoint {
 			width: 50%;
@@ -46,7 +47,9 @@
 
 	h1,
 	p {
-		max-width: 34em;
+		@include breakpoint {
+			max-width: 34em;
+		}
 	}
 
 	h1 {

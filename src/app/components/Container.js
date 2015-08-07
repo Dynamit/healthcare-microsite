@@ -42,10 +42,10 @@ class Container extends React.Component {
 
 		this.articleList = [
 			'Introduction',
-			'September 1',
-			'September 10',
-			'September 17',
-			'October 2'
+			'2015 September 1',
+			'2015 September 10',
+			'2015 September 17',
+			'2015 October 2'
 		]
 
 	}

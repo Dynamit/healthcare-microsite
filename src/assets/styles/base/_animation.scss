@@ -36,26 +36,30 @@
 .animate-menuOut {
 	animation-name: menuOut;
 	animation-delay: 300ms;
+
+	@include breakpoint {
+		animation: none !important;
+	}
 }
 
 
 @keyframes bodyIn {
 	0% {
-		left: -$menu-width;
+		transform: translateX(-$menu-width);
 	}
 
 	60%, 100% {
-		left: 0;
+		transform: translateX(0);
 	}
 }
 
 @keyframes bodyOut {
 	0% {
-		left: 0;
+		transform: translateX(0);
 	}
 
 	60%, 100% {
-		left: -$menu-width;
+		transform: translateX(-$menu-width);
 	}
 }
 
@@ -66,4 +70,8 @@
 
 .animate-bodyOut {
 	animation-name: bodyOut;
+
+	@include breakpoint {
+		animation: none !important;
+	}
 }

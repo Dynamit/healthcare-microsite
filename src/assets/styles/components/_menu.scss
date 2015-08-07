@@ -18,15 +18,7 @@
 		vertical-align: middle;
 	}
 }
-@keyframes flash {
-  from, 50%, 100% {
-    opacity: 1;
-  }
 
-  25%, 75% {
-    opacity: 0;
-  }
-}
 .menu {
 	position: absolute;
 	top: 0;
@@ -41,12 +33,20 @@
 		height: 10em;
 		top: auto;
 		bottom: 0;
+		right: 0;
 		overflow: visible;
+		transform: none;
 	}
 
 	.is-navigating & {
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
+	}
+
+	.is-reading & {
+		@include breakpoint {
+			height: 0;
+		}
 	}
 
 	&-list {
@@ -93,6 +93,19 @@
 					opacity: 1;
 				}
 			}
+
+			&:hover,
+			&.is-selected {
+				.menu-item-placeholder {
+					display: none;
+
+				}
+
+				.menu-item-title {
+					display: block;
+				}
+			}
+
 		}
 
 		&:last-child {
@@ -106,19 +119,10 @@
 
 			@include breakpoint {
 				background-color: transparent;
-			}
 
-			.menu-item-placeholder {
-				display: block;
-				position: absolute;
-				width: 100%;
-				text-align: center;
-				top: calc(50% + 4px);
-				transform: translateY(-50%);
-
-				div:last-child {
-					font-size: 2em;
-					line-height: 1.2;
+				.menu-item-placeholder {
+					display: table-cell;
+					vertical-align: middle;
 				}
 			}
 		}
@@ -167,7 +171,7 @@
 			text-align: center;
 			max-width: 15em;
 			margin: 4px auto 0;
-			display: block;
+			display: none;
 		}
 	}
 
@@ -188,6 +192,18 @@
 
 		@include breakpoint {
 			color: color(white);
+			display: block;
+			width: 100%;
+			text-align: center;
+
+			div:first-child:not(:last-child) {
+				font-size: 0.75em;
+			}
+
+			div:last-child:not(:first-child) {
+				font-size: 2em;
+				line-height: 1.2;
+			}
 		}
 	}
 }
@@ -203,7 +219,6 @@
 		padding: 2em;
 
 		.is-reading & {
-			// right: auto;
 			right: 50%;
 		}
 	}

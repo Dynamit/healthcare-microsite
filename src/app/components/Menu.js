@@ -11,10 +11,23 @@ class Menu extends React.Component {
 
 		let menuClassName = classNames('menu', this.props.className);
 
+		// wrap each line of the placeholder in a div
+		let formatPlaceholder = (placeholder, isPublished) => {
+			return placeholder.split(' ').map((line, i) => {
+
+				if (!isPublished && i === 0) {
+					line = 'Coming';
+				}
+
+				return	`<div>${line}</div>`;
+
+			}).join('');
+		};
+
 		return (
 			<div className={menuClassName}>
 				<div className="util-links">
-					<a href="#">Get Notified</a>
+					<a href="http://dynamit.us1.list-manage.com/subscribe?u=a2efcfc6b4b404e84aca37fcd&id=8171c26a8e" target="_blank">Get Notified</a>
 					<a href="http://dynamit.com/contact" target="_blank">Contact</a>
 				</div>
 				<ul className="menu-list">
@@ -22,12 +35,15 @@ class Menu extends React.Component {
 					// iterate through each possible article
 					// if an entry exists, show it's data
 					// else, show the placeholder
+
 					if (articles[i]) {
 
 						let itemClasses = classNames({
 							'menu-item': true,
 							'is-selected': (this.props.selectedArticle === articles[i].slug)
 						});
+
+						let placeholder = formatPlaceholder(item, true);
 
 						return (
 							<li key={i} className={itemClasses} onClick={this.props.handleSelectArticle.bind(this, articles[i].slug)}>
@@ -37,18 +53,18 @@ class Menu extends React.Component {
 										onClick={this.props.handleSelectArticle.bind(this, i)}
 										className="menu-item-title">{articles[i].title}</a>
 									<div className="menu-item-date">{articles[i].date.formatted}</div>
-									<div className="menu-item-placeholder">{item}</div>
+									<div className="menu-item-placeholder" dangerouslySetInnerHTML={{ __html: placeholder }} />
 								</div>
 							</li>
 						);
 
 					} else {
 
-						let placeholder = `<div>${item.split(' ')[0]}</div><div>${item.split(' ')[1]}</div>`;
+						let placeholder = formatPlaceholder(item, false);
 
 						return (
 							<li key={i} className="menu-item is-unpublished">
-								<div className="menu-item-placeholder" dangerouslySetInnerHTML={{ __html: placeholder }}></div>
+								<div className="menu-item-placeholder" dangerouslySetInnerHTML={{ __html: placeholder }} />
 							</li>
 						);
 
