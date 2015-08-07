@@ -18,16 +18,22 @@
 		vertical-align: middle;
 	}
 }
+@keyframes flash {
+  from, 50%, 100% {
+    opacity: 1;
+  }
 
+  25%, 75% {
+    opacity: 0;
+  }
+}
 .menu {
 	position: absolute;
 	top: 0;
-	right: 0;
 	z-index: 0;
 	width: $menu-width;
 	overflow: hidden;
 	height: 100%;
-	background-color: color(light-gray);
 
 	@include breakpoint {
 		z-index: 100;
@@ -35,18 +41,12 @@
 		height: 10em;
 		top: auto;
 		bottom: 0;
-		background-color: transparent;
+		overflow: visible;
 	}
 
 	.is-navigating & {
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
-	}
-
-	.is-reading & {
-		@include breakpoint {
-			display: none;
-		}
 	}
 
 	&-list {
@@ -62,8 +62,10 @@
 			padding: 0;
 			background-color: color(overlay);
 
-			&:hover {
-
+			.is-reading & {
+				@include breakpoint {
+					display: none;
+				}
 			}
 		}
 	}
@@ -72,18 +74,23 @@
 		margin-bottom: 1.5em;
 		position: relative;
 		cursor: pointer;
+		background-color: color(white);
+		transition: box-shadow 300ms;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
 
 		@include breakpoint {
 			float: left;
 			width: percentage(1/5);
 			margin-bottom: 0;
 			height: 10em;
+			display: table;
+			background-color: transparent;
 
 			&:not(.is-unpublished):hover {
 				box-shadow: inset 0 -3px 0 0 color(teal);
 
 				.menu-item-image {
-					display: block;
+					opacity: 1;
 				}
 			}
 		}
@@ -117,11 +124,7 @@
 		}
 
 		&.is-selected {
-			box-shadow: 0 3px 0 0 color(teal);
-
-			@include breakpoint {
-				box-shadow: inset 0 -3px 0 0 color(teal);
-			}
+			box-shadow: inset 0 -3px 0 0 color(teal);
 		}
 	}
 
@@ -135,19 +138,19 @@
 			position: absolute;
 			width: 100%;
 			height: 100%;
-			display: none;
+			opacity: 0;
 			z-index: -1;
 		}
 	}
 
 	&-item-content {
-		background-color: color(white);
 		padding: 0.75em 1em;
 		height: 5.5em;
 
 		@include breakpoint {
-			background-color: transparent;
-			height: auto;
+			display: table-cell;
+			vertical-align: middle;
+			padding: 0 1.5em;
 		}
 	}
 
@@ -161,13 +164,10 @@
 			@include uppercase;
 			color: color(white);
 			font-weight: 400;
-			position: absolute;
-			padding: 1em;
 			text-align: center;
-			top: calc(50% + 4px);
-			width: 100%;
-			left: 0;
-			transform: translateY(-50%);
+			max-width: 15em;
+			margin: 4px auto 0;
+			display: block;
 		}
 	}
 
@@ -203,8 +203,8 @@
 		padding: 2em;
 
 		.is-reading & {
-			right: auto;
-			left: 50%;
+			// right: auto;
+			right: 50%;
 		}
 	}
 

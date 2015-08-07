@@ -9,11 +9,13 @@ class Menu extends React.Component {
 		let items = this.props.items;
 		let articles = sortBy(this.props.articles, 'date.raw');
 
+		let menuClassName = classNames('menu', this.props.className);
+
 		return (
-			<div className="menu">
+			<div className={menuClassName}>
 				<div className="util-links">
 					<a href="#">Get Notified</a>
-					<a href="#">Contact</a>
+					<a href="http://dynamit.com/contact" target="_blank">Contact</a>
 				</div>
 				<ul className="menu-list">
 				{this.props.items.map((item, i) => {

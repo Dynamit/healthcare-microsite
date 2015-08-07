@@ -1,23 +1,25 @@
 .container {
 	min-height: 100%;
 	position: relative;
-	background-color: color(black);
+	background-color: color(light-gray);
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 .body {
 	@include darken-overlay;
 	background-position: center center;
 	background-size: cover;
+	background-color: color(light-gray);
 	position: absolute;
 	z-index: 1;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	transition: transform 300ms;
 
 	.is-navigating & {
-		transform: translate3d(-$menu-width, 0, 0);
 		overflow: hidden;
 	}
 

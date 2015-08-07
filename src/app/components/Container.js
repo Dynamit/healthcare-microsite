@@ -17,7 +17,8 @@ class Container extends React.Component {
 		this.state = {
 			selectedArticle: (this.props.data.article) ? this.props.data.article.slug : 'introduction',
 			isReading: this.props.isReading,
-			isNavigating: false
+			isNavigating: false,
+			hasEngaged: false
 		};
 
 		this.articleList = [
@@ -79,7 +80,10 @@ class Container extends React.Component {
 
 	_toggleMenu(e) {
 		if (e) { e.preventDefault() }
-		this.setState({ isNavigating: !this.state.isNavigating })
+		this.setState({
+			isNavigating: !this.state.isNavigating,
+			hasEngaged: true
+		});
 	}
 
 	render() {
@@ -89,18 +93,27 @@ class Container extends React.Component {
 			backgroundImage: `url(/assets/images/${articleData.image})`
 		};
 
-		let containerClassnames = classNames({
-			'container': true,
+		let containerClassNames = classNames('container', {
 			'is-navigating': this.state.isNavigating,
 			'is-reading': this.state.isReading
+		});
+
+		let bodyClassNames = classNames('body', {
+			'animate-bodyIn': !this.state.isNavigating && this.state.hasEngaged,
+			'animate-bodyOut': this.state.isNavigating
+		});
+
+		let menuClassNames = classNames({
+			'animate-menuIn': this.state.isNavigating,
+			'animate-menuOut': !this.state.isNavigating
 		});
 
 		let bodyCloseHandler = (this.state.isNavigating) ? this._toggleMenu.bind(this) : '';
 
 		return (
-			<div className={containerClassnames}>
+			<div className={containerClassNames}>
 
-				<div className="body" style={containerStyle} onTouchStart={bodyCloseHandler} onClick={bodyCloseHandler}>
+				<div className={bodyClassNames} style={containerStyle} onTouchStart={bodyCloseHandler} onClick={bodyCloseHandler}>
 
 					<div className="header">
 						<div className="lockup" onClick={this._stopReading.bind(this)}>
@@ -140,6 +153,7 @@ class Container extends React.Component {
 				</div>
 
 				<Menu
+					className={menuClassNames}
 					items={this.articleList}
 					selectedArticle={this.state.selectedArticle}
 					articles={this.props.data.meta}

@@ -1,0 +1,69 @@
+.preload * {
+	transition: none !important;
+	animation: none !important;
+}
+
+[class*='animate'] {
+	animation-duration: 600ms;
+	animation-fill-mode: both;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes menuIn {
+	0% {
+		right: -5rem;
+	}
+
+	60%, 100% {
+		right: 0;
+	}
+}
+
+@keyframes menuOut {
+	0% {
+		right: 0;
+	}
+
+	60%, 100% {
+		right: -5rem;
+	}
+}
+
+.animate-menuIn {
+	animation-name: menuIn;
+}
+
+.animate-menuOut {
+	animation-name: menuOut;
+	animation-delay: 300ms;
+}
+
+
+@keyframes bodyIn {
+	0% {
+		left: -$menu-width;
+	}
+
+	60%, 100% {
+		left: 0;
+	}
+}
+
+@keyframes bodyOut {
+	0% {
+		left: 0;
+	}
+
+	60%, 100% {
+		left: -$menu-width;
+	}
+}
+
+.animate-bodyIn {
+	animation-name: bodyIn;
+	animation-delay: 300ms;
+}
+
+.animate-bodyOut {
+	animation-name: bodyOut;
+}

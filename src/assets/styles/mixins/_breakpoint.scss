@@ -2,7 +2,7 @@
  * Include a responsive breakpoint
  * @example	@include breakpoint(32em) { ... }
  */
-@mixin breakpoint($width: 52em) {
+@mixin breakpoint($width: 57em) {
 	@media screen and (min-width: $width) {
 		@content;
 	}
