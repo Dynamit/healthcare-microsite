@@ -15,9 +15,28 @@ class Container extends React.Component {
 		super(props);
 
 		this.state = {
+			/**
+			 * The `slug` of the currently selected article
+			 * @type {String}
+			 */
 			selectedArticle: (this.props.data.article) ? this.props.data.article.slug : 'introduction',
+
+			/**
+			 * Whether or not the user is in reading mode
+			 * @type {Boolean}
+			 */
 			isReading: this.props.isReading,
+
+			/**
+			 * Whether or not the (mobile) menu is open
+			 * @type {Boolean}
+			 */
 			isNavigating: false,
+
+			/**
+			 * Whether or not the user has engaged the menu. Used to add animation classes.
+			 * @type {Boolean}
+			 */
 			hasEngaged: false
 		};
 
@@ -105,7 +124,7 @@ class Container extends React.Component {
 
 		let menuClassNames = classNames({
 			'animate-menuIn': this.state.isNavigating,
-			'animate-menuOut': !this.state.isNavigating
+			'animate-menuOut': !this.state.isNavigating && this.state.hasEngaged
 		});
 
 		let bodyCloseHandler = (this.state.isNavigating) ? this._toggleMenu.bind(this) : '';
