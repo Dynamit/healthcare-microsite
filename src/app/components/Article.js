@@ -4,6 +4,7 @@ import Symbol from './Symbol';
 import Social from './Social';
 import PrevNext from './PrevNext';
 import Button from './Button';
+import Helmet from 'react-helmet';
 
 class Article extends React.Component {
 
@@ -21,6 +22,8 @@ class Article extends React.Component {
 
 		return (
 			<div className="article">
+				<Helmet
+					title={`${this.props.data.article.title} | ${this.props.title}`} />
 				<Button onClick={this.props.handleStopReading} className="hide-button">Hide</Button>
 				<Social />
 				<div className="measure mt-l pt mb">

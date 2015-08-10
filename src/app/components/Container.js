@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteHandler, Navigation } from 'react-router';
+import Helmet from 'react-helmet';
 import Symbol from './Symbol';
 import Button from './Button';
 import Menu from './Menu';
@@ -132,6 +133,9 @@ class Container extends React.Component {
 		return (
 			<div className={containerClassNames}>
 
+				<Helmet
+					title={this.props.title} />
+
 				<div className={bodyClassNames} style={containerStyle} onTouchStart={bodyCloseHandler} onClick={bodyCloseHandler}>
 
 					<div className="header">
@@ -185,5 +189,9 @@ class Container extends React.Component {
 };
 
 mixin.onClass(Container, Navigation);
+
+Container.defaultProps = {
+	title: 'Healthcare | Dynamit'
+}
 
 export default Container;

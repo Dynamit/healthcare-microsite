@@ -9,6 +9,7 @@ import React from 'react';
 import Router from 'react-router';
 import routes from '../src/app/Routes';
 import Layout from '../src/app/components/Layout';
+import Helmet from 'react-helmet';
 import Hapi from 'hapi';
 
 
@@ -178,9 +179,16 @@ export default (opts) => {
 					// get the compiled route component
 					let routePayload = React.createElement(Handler, { data: { meta: data[0], article: data[1] } });
 
+					// render component to string
+					let markup = React.renderToString(routePayload);
+
+					// get react-helmet props
+					let head = Helmet.rewind();
+
 					// wrap the route payload in the Layout; render
 					let html = React.renderToStaticMarkup(layout({
-						markup: React.renderToString(routePayload)
+						markup: markup,
+						head: head
 					}));
 
 					// render route payload
