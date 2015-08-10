@@ -1,5 +1,5 @@
 import React from 'react';
-import merge from 'lodash/object/merge';
+import { clone, merge } from 'lodash';
 
 const symbols = {
 	"dynamit-logo": {
@@ -49,10 +49,9 @@ class Symbol extends React.Component {
 
 		let containerClassname = `symbol ${this.props.id}`;
 
-		let containerProps = merge(this.props.containerNodeAttrs, {
-			className: containerClassname,
-			onClick: this.props.onClick
-		})
+		let containerProps = merge(clone(this.props), {
+			className: containerClassname
+		});
 
 		return (
 			React.createElement(this.props.containerNodeType, containerProps,
@@ -64,7 +63,7 @@ class Symbol extends React.Component {
 
 // define default props
 Symbol.defaultProps = {
-	containerNodeType: 'div',
+	containerNodeType: 'a',
 	containerNodeAttrs: {},
 	onClick: () => {}
 };

@@ -21,3 +21,67 @@
 .share-actions {
 	width: 20px;
 }
+
+.link-icon {
+	position: relative;
+	display: none;
+
+	&:before,
+	&:after {
+		position: absolute;
+		opacity: 0;
+		transition: opacity 200ms;
+	}
+
+	&:before {
+		position: absolute;
+		width: 0;
+		height: 0;
+		color: color(black);
+		pointer-events: none;
+		content: ' ';
+		border: 5px solid transparent;
+		top: 50%;
+		bottom: 50%;
+		left: -10px;
+		margin-top: -5px;
+		border-left-color: color(black);
+	}
+
+	&:after {
+		@include fz-xs;
+		padding: 5px 8px;
+		color: color(white);
+		text-align: center;
+		text-decoration: none;
+		text-shadow: none;
+		text-transform: none;
+		letter-spacing: normal;
+		word-wrap: break-word;
+		white-space: pre;
+		pointer-events: none;
+		content: attr(aria-label);
+		background: color(black);
+		border-radius: 3px;
+		right: 100%;
+		bottom: 50%;
+		margin-right: 10px;
+		transform: translateY(50%);
+	}
+
+	&.just-copied {
+		&:before,
+		&:after {
+			opacity: 1;
+		}
+	}
+
+	&.is-visible {
+		display: block;
+	}
+}
+
+.tooltipped:hover:before,.tooltipped:hover:after,.tooltipped:active:before,.tooltipped:active:after,.tooltipped:focus:before,.tooltipped:focus:after {
+	display: inline-block;
+	text-decoration: none
+}

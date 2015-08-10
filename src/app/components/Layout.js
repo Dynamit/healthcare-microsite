@@ -10,10 +10,7 @@ class Layout extends React.Component {
 
 		super(props);
 
-		// improved async Typekit loading https://goo.gl/t1jDL8
-		let kitId = 'omf4gip';
-
-		this.loadFonts = `!function(e){var t=3e3;window.sessionStorage&&"false"===sessionStorage.getItem("useTypekit")&&(t=0);var s,a={kitId:'${kitId}',scriptTimeout:t},i=e.documentElement,o=setTimeout(function(){i.className=i.className.replace(/\bwf-loading\b/g,"")+"wf-inactive",window.sessionStorage&&sessionStorage.setItem("useTypekit","false")},a.scriptTimeout),n=e.createElement("script"),c=!1,r=e.getElementsByTagName("script")[0];i.className+=" wf-loading",n.src="//use.typekit.net/"+a.kitId+".js",n.async=!0,n.onload=n.onreadystatechange=function(){if(s=this.readyState,!(c||s&&"complete"!=s&&"loaded"!=s)){c=!0,clearTimeout(o);try{Typekit.load(a)}catch(e){}}},r.parentNode.insertBefore(n,r)}(document);`;
+		this.loadFonts = `try{Typekit.load({ async: true });}catch(e){}`;
 
 	}
 
@@ -70,7 +67,7 @@ class Layout extends React.Component {
 					{meta}
 					<link rel="stylesheet" href="/assets/styles/main.css" />
 					{link}
-					<script src="//use.typekit.net/omf4gip.js"></script>
+					<script src="http://use.typekit.net/omf4gip.js"></script>
 					<script dangerouslySetInnerHTML={{__html: this.loadFonts}}></script>
 				</head>
 				<body dangerouslySetInnerHTML={{ __html: this.props.markup }} />

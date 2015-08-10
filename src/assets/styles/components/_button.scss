@@ -10,7 +10,7 @@
 
 	.symbol {
 		float: right;
-		margin-top: 4px;
+		margin-top: 3px;
 		margin-left: 0.5em;
 		width: 1em;
 		fill: color(orange)
@@ -21,6 +21,7 @@
 			float: left;
 			transform: rotate(180deg);
 			margin-left: 0;
+			margin-top: 2px;
 			margin-right: 0.5em;
 		}
 	}

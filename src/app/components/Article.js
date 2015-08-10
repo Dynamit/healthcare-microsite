@@ -41,9 +41,9 @@ class Article extends React.Component {
 
 				<Button href="/" onClick={this.props.handleStopReading} className="hide-button">Hide</Button>
 
-				<Social />
+				<Social {...this.props} />
 
-				<div className="measure mt-l pt mb">
+				<div className="measure mt-l pt-l mb">
 					<div className="author">
 						<img src={`/assets/images/${article.avatar}`} className="author-avatar" />
 						<div className="author-details"><span className="author-name">{article.author}</span>&bull;<span className="author-date">{article.date.formatted}</span></div>

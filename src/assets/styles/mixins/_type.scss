@@ -6,6 +6,10 @@
 	font-size: 0.875em;
 }
 
+@mixin fz-xs {
+	font-size: 0.75em;
+}
+
 @mixin uppercase {
 	text-transform: uppercase;
 	letter-spacing: 0.0875em;

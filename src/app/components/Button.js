@@ -15,7 +15,7 @@ class Button extends React.Component {
 		return (
 			<a href={this.props.href} onClick={this.props.onClick} className={buttonClass}>
 				{this.props.children}
-				<Symbol id="arrow-icon" />
+				<Symbol id="arrow-icon" containerNodeType="span" />
 			</a>
 		);
 	}
