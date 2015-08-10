@@ -97,8 +97,8 @@ class App extends React.Component {
 	}
 
 	_scrollToTop() {
+		React.findDOMNode(this.refs.App).scrollTop = 0;
 		React.findDOMNode(this.refs.Handler).scrollTop = 0;
-		window.scrollTo(0,0);
 	}
 
 	_toggleMenu(e) {
@@ -135,10 +135,22 @@ class App extends React.Component {
 		let bodyCloseHandler = (this.state.isNavigating) ? this._toggleMenu.bind(this) : '';
 
 		return (
-			<div className={containerClassNames}>
+			<div ref="App" className={containerClassNames}>
 
 				<Helmet
-					title={this.props.title} />
+					title={this.props.title}
+					meta={[
+						{ name: 'description', content: this.props.description },
+						{ name: 'og:description', content: this.props.description },
+						{ property: 'og:title', content: this.props.title },
+						{ property: 'og:type', content: 'article' },
+						{ property: 'og:image', content: `${this.props.baseurl}/assets/images/${articleData.image}` },
+						{ property: 'twitter:card', content: 'summary_large_image' },
+						{ property: 'twitter:site', content: '@dynamit' },
+						{ property: 'twitter:title', content: this.props.title },
+						{ property: 'twitter:description', content: this.props.description },
+						{ property: 'twitter:image', content: `${this.props.baseurl}/assets/images/${articleData.image}` }
+					]} />
 
 				<div className={bodyClassNames}
 					style={containerStyle}
@@ -171,6 +183,7 @@ class App extends React.Component {
 					</div>
 
 					<RouteHandler
+						ref="Handler"
 						{...this.props}
 						selectedArticle={this.state.selectedArticle}
 						isReading={this.state.isReading}
@@ -197,7 +210,9 @@ class App extends React.Component {
 mixin.onClass(App, Navigation);
 
 App.defaultProps = {
-	title: 'Healthcare | Dynamit'
+	title: 'Healthcare | Dynamit',
+	description: 'TODO',
+	baseurl: 'http://healthcare.dynamit.com'
 }
 
 export default App;

@@ -24,7 +24,20 @@ class Article extends React.Component {
 			<div className="article">
 
 				<Helmet
-					title={`${this.props.data.article.title} | ${this.props.title}`} />
+					title={`${this.props.data.article.title} | ${this.props.title}`}
+					meta={[
+						{ name: 'description', content: article.abstract },
+						{ name: 'og:description', content: article.abstract },
+						{ property: 'og:title', content: article.title },
+						{ property: 'og:site_name', content: this.props.title },
+						{ property: 'og:type', content: 'article' },
+						{ property: 'og:image', content: `${this.props.baseurl}/assets/images/${article.image}` },
+						{ property: 'twitter:card', content: 'summary_large_image' },
+						{ property: 'twitter:site', content: '@dynamit' },
+						{ property: 'twitter:title', content: article.title },
+						{ property: 'twitter:description', content: article.abstract },
+						{ property: 'twitter:image', content: `${this.props.baseurl}/assets/images/${article.image}` }
+					]} />
 
 				<Button href="/" onClick={this.props.handleStopReading} className="hide-button">Hide</Button>
 
