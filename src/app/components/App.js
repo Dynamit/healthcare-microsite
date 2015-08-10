@@ -1,3 +1,6 @@
+/**
+ * Top-level component for the app
+ */
 import React from 'react';
 import { RouteHandler, Navigation } from 'react-router';
 import Helmet from 'react-helmet';
@@ -9,7 +12,7 @@ import classNames from 'classnames';
 import api from '../api';
 import PrevNext from './PrevNext';
 
-class Container extends React.Component {
+class App extends React.Component {
 
 	constructor(props) {
 
@@ -109,13 +112,14 @@ class Container extends React.Component {
 	render() {
 
 		let articleData =  this.props.data.meta[this.state.selectedArticle];
+
 		let containerStyle = {
 			backgroundImage: `url(/assets/images/${articleData.image})`
 		};
 
-		let containerClassNames = classNames('container', {
+		let containerClassNames = classNames('app', {
 			'is-navigating': this.state.isNavigating,
-			'is-reading': this.state.isReading
+			'is-reading': this.state.isReading || this.props.data.article
 		});
 
 		let bodyClassNames = classNames('body', {
@@ -136,7 +140,10 @@ class Container extends React.Component {
 				<Helmet
 					title={this.props.title} />
 
-				<div className={bodyClassNames} style={containerStyle} onTouchStart={bodyCloseHandler} onClick={bodyCloseHandler}>
+				<div className={bodyClassNames}
+					style={containerStyle}
+					onTouchStart={bodyCloseHandler}
+					onClick={bodyCloseHandler}>
 
 					<div className="header">
 						<div className="lockup" onClick={this._stopReading.bind(this)}>
@@ -164,7 +171,6 @@ class Container extends React.Component {
 					</div>
 
 					<RouteHandler
-						ref="Handler"
 						{...this.props}
 						selectedArticle={this.state.selectedArticle}
 						isReading={this.state.isReading}
@@ -188,10 +194,10 @@ class Container extends React.Component {
 
 };
 
-mixin.onClass(Container, Navigation);
+mixin.onClass(App, Navigation);
 
-Container.defaultProps = {
+App.defaultProps = {
 	title: 'Healthcare | Dynamit'
 }
 
-export default Container;
+export default App;

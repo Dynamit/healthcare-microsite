@@ -7,18 +7,18 @@
 
 @import '../../../node_modules/oocss-utils/utils';
 
+@import 'mixins/breakpoint';
 @import 'mixins/display';
 @import 'mixins/type';
-@import 'mixins/breakpoint';
 
 @import 'base/animation';
-@import 'base/normalize';
 @import 'base/foundation';
+@import 'base/normalize';
 
+@import 'components/app';
 @import 'components/article';
 @import 'components/button';
 @import 'components/menu';
-@import 'components/container';
-@import 'components/social';
 @import 'components/prev-next';
+@import 'components/social';
 @import 'components/symbols';

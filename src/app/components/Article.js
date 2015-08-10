@@ -13,7 +13,7 @@ class Article extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.handleStartReading()
+		this.props.handleStartReading();
 	}
 
 	render () {
@@ -22,22 +22,29 @@ class Article extends React.Component {
 
 		return (
 			<div className="article">
+
 				<Helmet
 					title={`${this.props.data.article.title} | ${this.props.title}`} />
-				<Button onClick={this.props.handleStopReading} className="hide-button">Hide</Button>
+
+				<Button href="/" onClick={this.props.handleStopReading} className="hide-button">Hide</Button>
+
 				<Social />
+
 				<div className="measure mt-l pt mb">
 					<div className="author">
 						<img src={`/assets/images/${article.avatar}`} className="author-avatar" />
 						<div className="author-details"><span className="author-name">{article.author}</span>&bull;<span className="author-date">{article.date.formatted}</span></div>
 					</div>
 				</div>
+
 				<div className="article-body measure" dangerouslySetInnerHTML={{__html: article.content}} />
+
 				<PrevNext
 					{...this.props}
 					items={this.articleList}
 					selectedArticle={this.props.selectedArticle}
 					handleSelectArticle={this.props.handleSelectArticle.bind(this)} />
+
 			</div>
 		);
 	}
