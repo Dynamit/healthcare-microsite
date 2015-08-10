@@ -114,7 +114,8 @@
 		padding: 2em;
 	}
 
-	.button {
+	.button,
+	.button:visited {
 		color: color(black);
 		font-weight: 600;
 	}
