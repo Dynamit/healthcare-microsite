@@ -1,6 +1,11 @@
+/**
+ * Main menu
+ */
+
 import React from 'react';
 import { sortBy } from 'lodash';
 import classNames from 'classnames';
+
 
 class Menu extends React.Component {
 
@@ -26,16 +31,18 @@ class Menu extends React.Component {
 
 		return (
 			<div className={menuClassName}>
+
 				<div className="util-links">
 					<a href="http://dynamit.us1.list-manage.com/subscribe?u=a2efcfc6b4b404e84aca37fcd&id=8171c26a8e" target="_blank">Get Notified</a>
 					<a href="http://dynamit.com/contact" target="_blank">Contact</a>
 				</div>
+
 				<ul className="menu-list">
 				{this.props.items.map((item, i) => {
+
 					// iterate through each possible article
 					// if an entry exists, show it's data
 					// else, show the placeholder
-
 					if (articles[i]) {
 
 						let itemClasses = classNames({
@@ -71,12 +78,12 @@ class Menu extends React.Component {
 					}
 				})}
 				</ul>
+
 			</div>
 		);
 	}
 
 };
 
+
 export default Menu;
-
-

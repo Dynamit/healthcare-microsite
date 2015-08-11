@@ -1,3 +1,7 @@
+/**
+ * Social sharing icons
+ */
+
 import React from 'react';
 import Symbol from './Symbol';
 import Dialog from 'share-dialog';
@@ -9,6 +13,10 @@ class Social extends React.Component {
 
 		super(props);
 
+		/**
+		 * Default state
+		 * @type {Object}
+		 */
 		this.state = {
 			showClipboard: false,
 			copyLabel: 'Copy Link'
@@ -17,24 +25,38 @@ class Social extends React.Component {
 	}
 
 	componentDidMount() {
-		this.node = React.findDOMNode(this.refs.copyLink);
+		// get copyLink DOM Node
+		this.copyLink = React.findDOMNode(this.refs.copyLink);
 	}
 
+	/**
+	 * Handle a click on "copy to clipboard" button.
+	 * Update state, toggle class (show tooltip for 1 sec.)
+	 */
 	_handleCopyLink() {
 		this.setState({ copyLabel: 'Copied!' }, () => {
-			this.node.classList.add('just-copied');
+			this.copyLink.classList.add('just-copied');
 			setTimeout(() => {
-				this.node.classList.remove('just-copied');
+				this.copyLink.classList.remove('just-copied');
 			}, 1000);
 		});
 	}
 
+	/**
+	 * Show the copy link.
+	 * Called only when zeroclipboard (flash) is available.
+	 */
 	_showCopyLink() {
 		this.setState({ showClipboard: true }, () => {
-			this.node.classList.add('is-visible');
+			this.copyLink.classList.add('is-visible');
 		});
 	}
 
+	/**
+	 * Open a share dialog
+	 * @param  {Object} dialog ShareDialog instance
+	 * @param  {Object} e Event
+	 */
 	_openDialog(dialog, e) {
 		e.preventDefault();
 		dialog.open();

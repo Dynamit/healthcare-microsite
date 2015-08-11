@@ -1,16 +1,28 @@
+/**
+ * Previous/Next Article buttons
+ */
+
 import React from 'react';
 import { sortBy } from 'lodash';
 import Button from './Button';
 
 class PrevNext extends React.Component {
 
+	/**
+	 * Pass-thru to parent `handleSelectArticle` method
+	 * @param  {String} key Article slug/id
+	 * @param  {Object} e Event
+	 */
 	handleSelectArticle(key, e) {
 		this.props.handleSelectArticle(key, e);
 	}
 
+
 	render() {
 
+		// sort articles by date
 		let articles = sortBy(this.props.data.meta, 'date.raw');
+
 		let currentPosition = 0;
 		let totalItems = 0;
 
@@ -29,6 +41,8 @@ class PrevNext extends React.Component {
 
 		});
 
+
+		// logic for hiding/showing buttons
 		let showPrev = (currentPosition > 0);
 		let showNext = (currentPosition + 1 < totalItems);
 

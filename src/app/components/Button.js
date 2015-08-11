@@ -1,6 +1,11 @@
+/**
+ * Button with left/right arrow
+ */
+
 import React from 'react';
 import Symbol from './Symbol';
 import classNames from 'classnames';
+
 
 class Button extends React.Component {
 
@@ -22,6 +27,7 @@ class Button extends React.Component {
 
 };
 
+// default props
 Button.defaultProps = {
 	href: '#',
 	direction: 'right',

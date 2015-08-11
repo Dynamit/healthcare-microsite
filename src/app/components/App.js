@@ -11,7 +11,13 @@ import mixin from 'react-mixin';
 import classNames from 'classnames';
 import api from '../api';
 import PrevNext from './PrevNext';
-import scroll from 'scroll';
+
+let scroll;
+
+if (typeof window !== 'undefined') {
+	scroll = require('scroll');
+}
+
 
 class App extends React.Component {
 
@@ -19,6 +25,10 @@ class App extends React.Component {
 
 		super(props);
 
+		/**
+		 * Default state
+		 * @type {Object}
+		 */
 		this.state = {
 			/**
 			 * The `slug` of the currently selected article
@@ -45,6 +55,10 @@ class App extends React.Component {
 			hasEngaged: false
 		};
 
+		/**
+		 * List of placeholder values "all" articles
+		 * @type {Array}
+		 */
 		this.articleList = [
 			'Introduction',
 			'2015 September 1',
@@ -55,10 +69,20 @@ class App extends React.Component {
 
 	}
 
+	/**
+	 * Async call for data
+	 * @return {Promise}
+	 */
 	static fetchData() {
 		return api.get('/article.json');
 	}
 
+	/**
+	 * Set an article as "selected".
+	 * Article can be "selected", but not "reading"; user can previewing article.
+	 * @param  {String} key Id (same as slug) of the article
+	 * @param  {Object} e Event
+	 */
 	_selectArticle(key, e) {
 		if (e) { e.preventDefault() }
 		this.setState({ selectedArticle: key, isNavigating: false }, () => {
@@ -68,6 +92,10 @@ class App extends React.Component {
 		});
 	}
 
+	/**
+	 * Stop reading. Return to "Home".
+	 * @param  {Object} e Event
+	 */
 	_stopReading(e) {
 		if (e) { e.preventDefault() }
 		this.setState({ isReading: false }, () => {
@@ -75,10 +103,18 @@ class App extends React.Component {
 		});
 	}
 
+	/**
+	 * Go into "reading" mode.
+	 * Start reading selected article.
+	 */
 	_startReading() {
 		this.setState({ isReading: true });
 	}
 
+	/**
+	 * Route to the selected article (read from state)
+	 * @param  {Object} e Event
+	 */
 	_gotoArticle(e) {
 		if (e) { e.preventDefault() }
 		this._scrollToTop().then(() => {
@@ -86,6 +122,10 @@ class App extends React.Component {
 		});
 	}
 
+	/**
+	 * Route to previous article
+	 * @param  {Object} e Event
+	 */
 	_gotoPrevArticle(e) {
 		if (e) { e.preventDefault() }
 		this._scrollToTop().then(() => {
@@ -93,6 +133,10 @@ class App extends React.Component {
 		});
 	}
 
+	/**
+	 * Route to the next article
+	 * @param  {Object} e Event
+	 */
 	_gotoNextArticle(e) {
 		if (e) { e.preventDefault() }
 		this._scrollToTop().then(() => {
@@ -100,6 +144,10 @@ class App extends React.Component {
 		});
 	}
 
+	/**
+	 * Smooth scroll both container and Handler component to top
+	 * @return {Promise}
+	 */
 	_scrollToTop() {
 
 		let scrollApp = new Promise((resolve, reject) => {
@@ -116,6 +164,11 @@ class App extends React.Component {
 
 	}
 
+	/**
+	 * Toggle open/close the menu.
+	 * Indicate that the app has been engaged (used to apply animations)
+	 * @param  {Object} e Event
+	 */
 	_toggleMenu(e) {
 		if (e) { e.preventDefault() }
 		this.setState({
@@ -124,10 +177,13 @@ class App extends React.Component {
 		});
 	}
 
+
 	render() {
 
-		let articleData =  this.props.data.meta[this.state.selectedArticle];
+		// data for selected article
+		let selectedArticleData =  this.props.data.meta[this.state.selectedArticle];
 
+		// conditional classes
 		let containerClassNames = classNames('app', {
 			'is-navigating': this.state.isNavigating,
 			'is-reading': this.state.isReading || this.props.data.article
@@ -143,6 +199,7 @@ class App extends React.Component {
 			'animate-menuOut': !this.state.isNavigating && this.state.hasEngaged
 		});
 
+		// if menu is open, make a click/touch on the `body` close the menu
 		let bodyCloseHandler = (this.state.isNavigating) ? this._toggleMenu.bind(this) : '';
 
 		return (
@@ -155,12 +212,12 @@ class App extends React.Component {
 						{ name: 'og:description', content: this.props.description },
 						{ property: 'og:title', content: this.props.title },
 						{ property: 'og:type', content: 'article' },
-						{ property: 'og:image', content: `${this.props.baseurl}/assets/images/${articleData.image}` },
+						{ property: 'og:image', content: `${this.props.baseurl}/assets/images/${selectedArticleData.image}` },
 						{ property: 'twitter:card', content: 'summary_large_image' },
 						{ property: 'twitter:site', content: '@dynamit' },
 						{ property: 'twitter:title', content: this.props.title },
 						{ property: 'twitter:description', content: this.props.description },
-						{ property: 'twitter:image', content: `${this.props.baseurl}/assets/images/${articleData.image}` }
+						{ property: 'twitter:image', content: `${this.props.baseurl}/assets/images/${selectedArticleData.image}` }
 					]} />
 
 				<div className={bodyClassNames}
@@ -168,7 +225,7 @@ class App extends React.Component {
 					onClick={bodyCloseHandler}>
 
 					<div className="poster">
-						<img src={`/assets/images/${articleData.image}`} />
+						<img src={`/assets/images/${selectedArticleData.image}`} />
 					</div>
 
 					<div className="header">
@@ -182,12 +239,12 @@ class App extends React.Component {
 					</div>
 
 					<div className="article-lead">
-						<h1 key={articleData.slug}>
-							<a href={`/article/${articleData.slug}/`} onClick={this._gotoArticle.bind(this)}>{articleData.title}</a>
+						<h1 key={selectedArticleData.slug}>
+							<a href={`/article/${selectedArticleData.slug}/`} onClick={this._gotoArticle.bind(this)}>{selectedArticleData.title}</a>
 						</h1>
-						<p>{articleData.abstract}</p>
+						<p>{selectedArticleData.abstract}</p>
 						<Button
-							href={`/article/${articleData.slug}/`}
+							href={`/article/${selectedArticleData.slug}/`}
 							onClick={this._gotoArticle.bind(this)}>Continue Reading</Button>
 						<PrevNext
 							{...this.props}
@@ -221,8 +278,12 @@ class App extends React.Component {
 
 };
 
+
+// mixin Navigation from react-router
 mixin.onClass(App, Navigation);
 
+
+// default props
 App.defaultProps = {
 	title: 'Healthcare | Dynamit',
 	description: 'Digital ideas for shaping the healthcare consumer experience in the areas of relationships, access, communication, and adoption.',

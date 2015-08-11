@@ -1,3 +1,7 @@
+/**
+ * Article view
+ */
+
 import React from 'react';
 import api from '../api';
 import Symbol from './Symbol';
@@ -6,13 +10,19 @@ import PrevNext from './PrevNext';
 import Button from './Button';
 import Helmet from 'react-helmet';
 
+
 class Article extends React.Component {
 
+	/**
+	 * Async call for data
+	 * @return {Promise}
+	 */
 	static fetchData(params) {
 		return api.get(`/article/${params.slug}.json`);
 	}
 
 	componentDidMount() {
+		// start reading once the component mounts
 		this.props.handleStartReading();
 	}
 

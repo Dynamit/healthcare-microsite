@@ -4,6 +4,7 @@
  */
 import React from 'react';
 
+
 class Layout extends React.Component {
 
 	constructor(props) {
@@ -17,6 +18,11 @@ class Layout extends React.Component {
 
 	}
 
+	/**
+	 * Convert a string returned by react-helmet to React DOM
+	 * @param  {String} str react-helmet `meta` or `link` value from `rewind()`
+	 * @return {Array} Array of React components
+	 */
 	_helmetToComponent(str) {
 
 		// stop if str is empty
@@ -80,5 +86,6 @@ class Layout extends React.Component {
 		);
 	}
 };
+
 
 export default Layout;
