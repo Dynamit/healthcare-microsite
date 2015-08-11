@@ -11,9 +11,12 @@ import mixin from 'react-mixin';
 import classNames from 'classnames';
 import api from '../api';
 import PrevNext from './PrevNext';
+import ImageLoader from 'react-imageloader';
 
+
+// conditionally load `scroll` module
+// its dependencies call `window` and break gulpfile.babel
 let scroll;
-
 if (typeof window !== 'undefined') {
 	scroll = require('scroll');
 }
@@ -52,7 +55,13 @@ class App extends React.Component {
 			 * Whether or not the user has engaged the menu. Used to add animation classes.
 			 * @type {Boolean}
 			 */
-			hasEngaged: false
+			hasEngaged: false,
+
+			/**
+			 * Whether or not the poster image is loading
+			 * @type {Boolean}
+			 */
+			posterLoading: true
 		};
 
 		/**
@@ -67,6 +76,10 @@ class App extends React.Component {
 			'2015 October 2'
 		]
 
+		/**
+		 * Animation duration/delay
+		 * @type {Number}
+		 */
 		this.duration = 500;
 
 	}
@@ -89,8 +102,16 @@ class App extends React.Component {
 
 		if (e) { e.preventDefault() }
 
-		this.setState({ isLoading: animate }, () => {
+		// if user selected article is already select, close nav and return
+		if (this.state.selectedArticle === key) {
+			this.setState({ isNavigating: false });
+			return;
+		}
 
+		// trigger loading
+		this.setState({ isLoading: animate, posterLoading: true }, () => {
+
+			// if should animate and menu is closed, delay, else, no delay
 			let delay = (animate && !this.state.isNavigating) ? this.duration : 0;
 
 			setTimeout(() => {
@@ -105,6 +126,7 @@ class App extends React.Component {
 					}
 				});
 			}, delay);
+
 		});
 
 	}
@@ -172,6 +194,13 @@ class App extends React.Component {
 		});
 	}
 
+	/**
+	 * When poster image loads, update state
+	 */
+	_handlePosterLoad() {
+		this.setState({ posterLoading: false });
+	}
+
 
 	render() {
 
@@ -195,6 +224,10 @@ class App extends React.Component {
 		let menuClassNames = classNames({
 			'animate-menuIn': this.state.isNavigating,
 			'animate-menuOut': !this.state.isNavigating && this.state.hasEngaged
+		});
+
+		let posterClassNames = classNames('poster', {
+			'is-loading': this.state.posterLoading
 		});
 
 		// if menu is open, make a click/touch on the `body` close the menu
@@ -222,8 +255,11 @@ class App extends React.Component {
 					onTouchStart={bodyCloseHandler}
 					onClick={bodyCloseHandler}>
 
-					<div className="poster">
-						<img src={`/assets/images/${selectedArticleData.image}`} />
+					<div className={posterClassNames}>
+						<ImageLoader
+							src={`/assets/images/${selectedArticleData.image}`}
+							onLoad={this._handlePosterLoad.bind(this)}
+							wrapper={React.DOM.div} />
 						<div className="article-lead">
 							<h1 key={selectedArticleData.slug}>
 								<a href={`/article/${selectedArticleData.slug}/`} onClick={this._gotoArticle.bind(this)}>{selectedArticleData.title}</a>
@@ -249,8 +285,6 @@ class App extends React.Component {
 							<Symbol id="menu-icon" />
 						</div>
 					</div>
-
-
 
 					<div className="handler">
 						<RouteHandler

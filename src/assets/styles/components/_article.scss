@@ -16,7 +16,6 @@
 	}
 
 	.is-reading & {
-		height: $poster-reading-height;
 		padding: 0;
 
 		@include breakpoint {
@@ -87,6 +86,7 @@
 	p {
 		padding-bottom: 1em;
 		border-bottom: 3px solid color(white);
+		display: block;
 
 		.is-reading & {
 			display: none;

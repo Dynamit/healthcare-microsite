@@ -26,6 +26,7 @@
 	width: $menu-width;
 	overflow: hidden;
 	height: 100%;
+	background-color: color(light-gray);
 
 	@include breakpoint {
 		z-index: 100;
@@ -36,6 +37,7 @@
 		right: 0;
 		overflow: visible;
 		transform: none;
+		background-color: transparent;
 	}
 
 	.is-navigating & {

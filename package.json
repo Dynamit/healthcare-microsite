@@ -41,6 +41,7 @@
     "moment": "^2.10.6",
     "oocss-utils": "^0.2.2",
     "react-helmet": "^1.1.0",
+    "react-imageloader": "^2.0.0",
     "react-mixin": "^1.7.0",
     "react-router": "^0.13.3",
     "react-zeroclipboard": "^2.0.1",

@@ -57,7 +57,7 @@ class Menu extends React.Component {
 								<div className="menu-item-image" style={{ backgroundImage: `url(/assets/images/${articles[i].thumbnail})` }}></div>
 								<div className="menu-item-content">
 									<a href={`/article/${articles[i].slug}/`}
-										onClick={this.props.handleSelectArticle.bind(this, i)}
+										onClick={this.props.handleSelectArticle.bind(this, articles[i].slug)}
 										className="menu-item-title">{articles[i].title}</a>
 									<div className="menu-item-date">{articles[i].date.formatted}</div>
 									<div className="menu-item-placeholder" dangerouslySetInnerHTML={{ __html: placeholder }} />
