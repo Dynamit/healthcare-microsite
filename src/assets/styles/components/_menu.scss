@@ -72,6 +72,7 @@
 
 	&-item {
 		margin-bottom: 1.5em;
+		line-height: 1.2;
 		position: relative;
 		cursor: pointer;
 		background-color: color(white);
@@ -98,7 +99,6 @@
 			&.is-selected {
 				.menu-item-placeholder {
 					display: none;
-
 				}
 
 				.menu-item-title {
@@ -170,7 +170,7 @@
 			font-weight: 400;
 			text-align: center;
 			max-width: 15em;
-			margin: 4px auto 0;
+			margin: 0 auto 0;
 			display: none;
 		}
 	}
@@ -189,21 +189,32 @@
 	&-item-placeholder {
 		@include uppercase;
 		display: none;
+		width: 100%;
+		text-align: center;
+
+		div:first-child:not(:last-child) {
+			font-size: 0.75em;
+		}
+
+		div:last-child:not(:first-child) {
+			font-size: 2em;
+			line-height: 1.2;
+		}
+
+		.is-unpublished & {
+			display: block;
+			top: -50%;
+			transform: translateY(50%);
+
+			@include breakpoint {
+				top: 0;
+				transform: none;
+			}
+		}
 
 		@include breakpoint {
 			color: color(white);
 			display: block;
-			width: 100%;
-			text-align: center;
-
-			div:first-child:not(:last-child) {
-				font-size: 0.75em;
-			}
-
-			div:last-child:not(:first-child) {
-				font-size: 2em;
-				line-height: 1.2;
-			}
 		}
 	}
 }
