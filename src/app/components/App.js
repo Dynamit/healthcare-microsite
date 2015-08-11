@@ -117,6 +117,8 @@ class App extends React.Component {
 			backgroundImage: `url(/assets/images/${articleData.image})`
 		};
 
+		// TODO make poster image an img
+
 		let containerClassNames = classNames('app', {
 			'is-navigating': this.state.isNavigating,
 			'is-reading': this.state.isReading || this.props.data.article
@@ -211,7 +213,7 @@ mixin.onClass(App, Navigation);
 
 App.defaultProps = {
 	title: 'Healthcare | Dynamit',
-	description: 'TODO',
+	description: 'Digital ideas for shaping the healthcare consumer experience in the areas of relationships, access, communication, and adoption.',
 	baseurl: 'http://healthcare.dynamit.com'
 }
 

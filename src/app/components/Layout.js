@@ -65,6 +65,7 @@ class Layout extends React.Component {
 					<meta charSet="utf-8" />
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					{meta}
+					<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 					<link rel="stylesheet" href="/assets/styles/main.css" />
 					{link}
 					<script src="http://use.typekit.net/omf4gip.js"></script>

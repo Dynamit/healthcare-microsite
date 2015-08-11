@@ -116,6 +116,10 @@ gulp.task('styles', () => {
 
 // images
 gulp.task('images', () => {
+
+	gulp.src('src/favicon.ico')
+		.pipe(gulp.dest('dist/'));
+
 	return gulp.src(config.images.src)
 		.pipe(imagemin({
 			progressive: true,
