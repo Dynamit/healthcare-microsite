@@ -1,14 +1,17 @@
-.preload * {
-	transition: none !important;
-	animation: none !important;
-}
-
-[class*='animate'] {
+@mixin animate {
 	animation-duration: 600ms;
 	animation-fill-mode: both;
 	animation-timing-function: ease-in-out;
 }
 
+[class*='animate'] {
+	@include animate;
+}
+
+
+/**
+ * Mobile menu
+ */
 @keyframes menuIn {
 	0% {
 		right: -5rem;

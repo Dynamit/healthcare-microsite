@@ -6,7 +6,6 @@
 	left: 0;
 	color: color(white);
 	padding: 1em;
-	z-index: 0;
 	width: 100%;
 
 	@include breakpoint {
@@ -17,8 +16,6 @@
 	}
 
 	.is-reading & {
-		top: 0;
-		bottom: auto;
 		height: $poster-reading-height;
 		padding: 0;
 
@@ -100,19 +97,19 @@
 .article {
 	position: relative;
 	z-index: 100;
-	margin-top: $poster-reading-height;
 	background-color: color(white);
 	padding: 1em;
+	opacity: 1;
+	transform: scale(1), translateZ(0);
+	transition: opacity 300ms 200ms, transform 300ms;
 
 	@include breakpoint {
-		position: absolute;
-		margin-top: 0;
-		width: 50%;
-		height: 100vh;
-		overflow: auto;
-		right: 0;
-		top: 0;
 		padding: 2em;
+	}
+
+	.is-loading & {
+		opacity: 0.1;
+		transform: scale(0.98);
 	}
 
 	.button,

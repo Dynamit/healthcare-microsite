@@ -14,7 +14,7 @@ class PrevNext extends React.Component {
 	 * @param  {Object} e Event
 	 */
 	handleSelectArticle(key, e) {
-		this.props.handleSelectArticle(key, e);
+		this.props.handleSelectArticle(key, e, true);
 	}
 
 

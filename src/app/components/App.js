@@ -67,6 +67,8 @@ class App extends React.Component {
 			'2015 October 2'
 		]
 
+		this.duration = 500;
+
 	}
 
 	/**
@@ -83,13 +85,28 @@ class App extends React.Component {
 	 * @param  {String} key Id (same as slug) of the article
 	 * @param  {Object} e Event
 	 */
-	_selectArticle(key, e) {
+	_selectArticle(key, e, animate) {
+
 		if (e) { e.preventDefault() }
-		this.setState({ selectedArticle: key, isNavigating: false }, () => {
-			if (this.state.isReading) {
-				this._gotoArticle();
-			}
+
+		this.setState({ isLoading: animate }, () => {
+
+			let delay = (animate && !this.state.isNavigating) ? this.duration : 0;
+
+			setTimeout(() => {
+				this.setState({ selectedArticle: key, isNavigating: false }, () => {
+					if (this.state.isReading) {
+						this._gotoArticle();
+					}
+					if (animate) {
+						setTimeout(() => {
+							this.setState({ isLoading: false })
+						}, this.duration);
+					}
+				});
+			}, delay);
 		});
+
 	}
 
 	/**
@@ -116,28 +133,6 @@ class App extends React.Component {
 	 * @param  {Object} e Event
 	 */
 	_gotoArticle(e) {
-		if (e) { e.preventDefault() }
-		this._scrollToTop().then(() => {
-			this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
-		});
-	}
-
-	/**
-	 * Route to previous article
-	 * @param  {Object} e Event
-	 */
-	_gotoPrevArticle(e) {
-		if (e) { e.preventDefault() }
-		this._scrollToTop().then(() => {
-			this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
-		});
-	}
-
-	/**
-	 * Route to the next article
-	 * @param  {Object} e Event
-	 */
-	_gotoNextArticle(e) {
 		if (e) { e.preventDefault() }
 		this._scrollToTop().then(() => {
 			this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
@@ -191,7 +186,10 @@ class App extends React.Component {
 
 		let bodyClassNames = classNames('body', {
 			'animate-bodyIn': !this.state.isNavigating && this.state.hasEngaged,
-			'animate-bodyOut': this.state.isNavigating
+			'animate-bodyOut': this.state.isNavigating,
+			'animate-articleIn': this.state.isReading || this.props.data.article,
+			'animate-articleOut': !this.state.isReading,
+			'is-loading': this.state.isLoading
 		});
 
 		let menuClassNames = classNames({
@@ -226,6 +224,20 @@ class App extends React.Component {
 
 					<div className="poster">
 						<img src={`/assets/images/${selectedArticleData.image}`} />
+						<div className="article-lead">
+							<h1 key={selectedArticleData.slug}>
+								<a href={`/article/${selectedArticleData.slug}/`} onClick={this._gotoArticle.bind(this)}>{selectedArticleData.title}</a>
+							</h1>
+							<p>{selectedArticleData.abstract}</p>
+							<Button
+								href={`/article/${selectedArticleData.slug}/`}
+								onClick={this._gotoArticle.bind(this)}>Continue Reading</Button>
+							<PrevNext
+								{...this.props}
+								items={this.articleList}
+								selectedArticle={this.state.selectedArticle}
+								handleSelectArticle={this._selectArticle.bind(this)} />
+						</div>
 					</div>
 
 					<div className="header">
@@ -238,30 +250,19 @@ class App extends React.Component {
 						</div>
 					</div>
 
-					<div className="article-lead">
-						<h1 key={selectedArticleData.slug}>
-							<a href={`/article/${selectedArticleData.slug}/`} onClick={this._gotoArticle.bind(this)}>{selectedArticleData.title}</a>
-						</h1>
-						<p>{selectedArticleData.abstract}</p>
-						<Button
-							href={`/article/${selectedArticleData.slug}/`}
-							onClick={this._gotoArticle.bind(this)}>Continue Reading</Button>
-						<PrevNext
-							{...this.props}
-							items={this.articleList}
-							selectedArticle={this.state.selectedArticle}
-							handleSelectArticle={this._selectArticle.bind(this)} />
-					</div>
 
-					<RouteHandler
-						ref="Handler"
-						{...this.props}
-						selectedArticle={this.state.selectedArticle}
-						isReading={this.state.isReading}
-						handleSelectArticle={this._selectArticle.bind(this)}
-						handleGotoArticle={this._gotoArticle.bind(this)}
-						handleStartReading={this._startReading.bind(this)}
-						handleStopReading={this._stopReading.bind(this)} />
+
+					<div className="handler">
+						<RouteHandler
+							ref="Handler"
+							{...this.props}
+							selectedArticle={this.state.selectedArticle}
+							isReading={this.state.isReading}
+							handleSelectArticle={this._selectArticle.bind(this)}
+							handleGotoArticle={this._gotoArticle.bind(this)}
+							handleStartReading={this._startReading.bind(this)}
+							handleStopReading={this._stopReading.bind(this)} />
+					</div>
 
 				</div>
 
