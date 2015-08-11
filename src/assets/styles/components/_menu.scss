@@ -220,14 +220,14 @@
 }
 
 .util-links {
-	padding: 2em 1em 1em;
+	padding: 2em 0 1em;
 	text-align: center;
 
 	@include breakpoint {
 		position: fixed;
 		top: 0;
 		right: 0;
-		padding: 2em;
+		padding: 2em 1em;
 
 		.is-reading & {
 			right: 50%;
