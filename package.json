@@ -46,6 +46,7 @@
     "react-zeroclipboard": "^2.0.1",
     "run-sequence": "^1.0.2",
     "scripts-loader": "^0.1.3",
+    "scroll": "0.0.3",
     "share-dialog": "^0.2.0",
     "superagent": "^1.2.0",
     "viewport-units-buggyfill": "^0.5.4",

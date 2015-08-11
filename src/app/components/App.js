@@ -11,6 +11,7 @@ import mixin from 'react-mixin';
 import classNames from 'classnames';
 import api from '../api';
 import PrevNext from './PrevNext';
+import scroll from 'scroll';
 
 class App extends React.Component {
 
@@ -80,25 +81,39 @@ class App extends React.Component {
 
 	_gotoArticle(e) {
 		if (e) { e.preventDefault() }
-		this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
-		this._scrollToTop();
+		this._scrollToTop().then(() => {
+			this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
+		});
 	}
 
 	_gotoPrevArticle(e) {
 		if (e) { e.preventDefault() }
-		this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
-		this._scrollToTop();
+		this._scrollToTop().then(() => {
+			this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
+		});
 	}
 
 	_gotoNextArticle(e) {
 		if (e) { e.preventDefault() }
-		this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
-		this._scrollToTop();
+		this._scrollToTop().then(() => {
+			this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
+		});
 	}
 
 	_scrollToTop() {
-		React.findDOMNode(this.refs.App).scrollTop = 0;
-		React.findDOMNode(this.refs.Handler).scrollTop = 0;
+
+		let scrollApp = new Promise((resolve, reject) => {
+			scroll.top(React.findDOMNode(this.refs.App), 0, resolve);
+		});
+
+		let scrollHandler = new Promise((resolve, reject) => {
+			scroll.top(React.findDOMNode(this.refs.Handler), 0, resolve);
+		});
+
+		return new Promise((resolve, reject) => {
+			Promise.all([scrollApp, scrollHandler]).then(resolve);
+		});
+
 	}
 
 	_toggleMenu(e) {
