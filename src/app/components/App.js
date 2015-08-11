@@ -113,12 +113,6 @@ class App extends React.Component {
 
 		let articleData =  this.props.data.meta[this.state.selectedArticle];
 
-		let containerStyle = {
-			backgroundImage: `url(/assets/images/${articleData.image})`
-		};
-
-		// TODO make poster image an img
-
 		let containerClassNames = classNames('app', {
 			'is-navigating': this.state.isNavigating,
 			'is-reading': this.state.isReading || this.props.data.article
@@ -155,9 +149,12 @@ class App extends React.Component {
 					]} />
 
 				<div className={bodyClassNames}
-					style={containerStyle}
 					onTouchStart={bodyCloseHandler}
 					onClick={bodyCloseHandler}>
+
+					<div className="poster">
+						<img src={`/assets/images/${articleData.image}`} />
+					</div>
 
 					<div className="header">
 						<div className="lockup" onClick={this._stopReading.bind(this)}>

@@ -8,9 +8,6 @@
 }
 
 .body {
-	@include darken-overlay;
-	background-position: center center;
-	background-size: cover;
 	background-color: color(light-gray);
 	position: absolute;
 	z-index: 1;
@@ -22,13 +19,25 @@
 	.is-navigating & {
 		overflow: hidden;
 	}
+}
 
-	.is-reading & {
-		background-position: center -25vh;
+.poster {
+	@include darken-overlay;
+	z-index: -1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
 
-		@include breakpoint {
-			background-position: -25vw center;
-		}
+	img {
+		flex-shrink: 0;
+		min-width: 100%;
+		min-height: 100%;
 	}
 }
 
