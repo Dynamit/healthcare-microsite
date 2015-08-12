@@ -47,7 +47,7 @@
 		position: absolute;
 		margin-top: 0;
 		width: 50%;
-		height: 100vh;
+		height: 100%;
 		overflow-x: hidden;
 		overflow-y: scroll;
 		right: 0;
@@ -55,7 +55,7 @@
 		opacity: 1;
 		transition: transform 300ms;
 		transform: translate3d(100%, 0, 0);
-		z-index: 100;
+		z-index: 200;
 	}
 
 	.is-reading & {
@@ -134,7 +134,7 @@
 		max-height: 100vh;
 
 		@include breakpoint {
-			max-height: initial;
+			max-height: none;
 		}
 	}
 }
@@ -145,10 +145,12 @@
 	z-index: 200;
 	position: absolute;
 	width: 100%;
+	left: 0;
+	top: 0;
 
 	.is-reading & {
 		@include breakpoint {
-			z-index: 0;
+			// z-index: 0;
 		}
 	}
 
