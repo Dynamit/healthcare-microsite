@@ -53,8 +53,6 @@ class Article extends React.Component {
 
 				<Social {...this.props} />
 
-
-
 				<div className="article-body measure">
 					<div className="mt-l pt-l mb">
 						<div className="author">
@@ -63,13 +61,12 @@ class Article extends React.Component {
 						</div>
 					</div>
 					<div dangerouslySetInnerHTML={{__html: article.content}} />
+					<PrevNext
+						{...this.props}
+						items={this.articleList}
+						selectedArticle={this.props.selectedArticle}
+						handleSelectArticle={this.props.handleSelectArticle.bind(this)} />
 				</div>
-
-				<PrevNext
-					{...this.props}
-					items={this.articleList}
-					selectedArticle={this.props.selectedArticle}
-					handleSelectArticle={this.props.handleSelectArticle.bind(this)} />
 
 			</div>
 		);

@@ -99,17 +99,9 @@
 	z-index: 100;
 	background-color: color(white);
 	padding: 1em;
-	opacity: 1;
-	transform: scale(1), translateZ(0);
-	transition: opacity 300ms 200ms, transform 300ms;
 
 	@include breakpoint {
 		padding: 2em;
-	}
-
-	.is-loading & {
-		opacity: 0.1;
-		transform: scale(0.98);
 	}
 
 	.button,

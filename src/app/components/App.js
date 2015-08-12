@@ -80,7 +80,7 @@ class App extends React.Component {
 		 * Animation duration/delay
 		 * @type {Number}
 		 */
-		this.duration = 500;
+		this.duration = 300;
 
 	}
 
@@ -108,11 +108,20 @@ class App extends React.Component {
 			return;
 		}
 
+		let state = {
+			isLoading: animate,
+			posterLoading: true
+		};
+
+		if (this.state.isNavigating) {
+			state.selectedArticle = key;
+		}
+
 		// trigger loading
-		this.setState({ isLoading: animate, posterLoading: true }, () => {
+		this.setState(state, () => {
 
 			// if should animate and menu is closed, delay, else, no delay
-			let delay = (animate && !this.state.isNavigating) ? this.duration : 0;
+			let delay = (animate) ? this.duration : 0;
 
 			setTimeout(() => {
 				this.setState({ selectedArticle: key, isNavigating: false }, () => {
