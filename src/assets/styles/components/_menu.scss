@@ -63,10 +63,13 @@
 			bottom: 0;
 			padding: 0;
 			background-color: color(overlay);
+			opacity: 1;
+			transition: transform 300ms, opacity 300ms;
 
 			.is-reading & {
 				@include breakpoint {
-					display: none;
+					opacity: 0;
+					transform: translateY(10em);
 				}
 			}
 		}

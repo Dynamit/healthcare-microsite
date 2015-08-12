@@ -9,8 +9,8 @@
 	width: 100%;
 
 	@include breakpoint {
-		bottom: auto;
-		bottom: 36vh;
+		transform: translateY(-36vh);
+		transition: transform 300ms;
 		width: 100%;
 		padding: 1em 4em;
 	}
