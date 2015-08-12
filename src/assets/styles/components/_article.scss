@@ -9,7 +9,7 @@
 	width: 100%;
 
 	@include breakpoint {
-		transform: translate3d(0, -36vh, 0);
+		transform: translate3d(0, -34vh, 0);
 		transition: transform 300ms;
 		width: 50%;
 		padding: 1em 4em;
