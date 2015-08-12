@@ -168,7 +168,7 @@
 	@include fz-s;
 	position: relative;
 	display: inline-block;
-	color: color(gray);
+	color: color(white);
 
 	&-avatar {
 		position: absolute;
@@ -190,7 +190,6 @@
 	}
 
 	&-name {
-		color: color(white);
 		font-weight: 600;
 		padding-right: 0.5em;
 	}
