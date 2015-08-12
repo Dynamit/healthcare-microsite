@@ -78,3 +78,33 @@
 		animation: none !important;
 	}
 }
+
+
+/**
+ * Article lead
+ */
+ @keyframes leadIn {
+ 	0% {
+ 		opacity: 0.3;
+ 		transform: translate3d(0, 2em, 0);
+ 	}
+
+ 	40% {
+ 		transform: translate3d(0, 0, 0);
+ 	}
+
+ 	100% {
+ 		opacity: 1;
+
+ 	}
+ }
+
+ .article-lead {
+ 	@include animate;
+
+ 	animation-name: leadIn;
+
+ 	.is-reading & {
+ 		animation-name: none;
+ 	}
+ }

@@ -273,10 +273,12 @@ class App extends React.Component {
 							<h1 key={selectedArticleData.slug}>
 								<a href={`/article/${selectedArticleData.slug}/`} onClick={this._gotoArticle.bind(this)}>{selectedArticleData.title}</a>
 							</h1>
-							<p>{selectedArticleData.abstract}</p>
-							<Button
-								href={`/article/${selectedArticleData.slug}/`}
-								onClick={this._gotoArticle.bind(this)}>Continue Reading</Button>
+							<div className="article-lead-extras">
+								<p>{selectedArticleData.abstract}</p>
+								<Button
+									href={`/article/${selectedArticleData.slug}/`}
+									onClick={this._gotoArticle.bind(this)}>Continue Reading</Button>
+							</div>
 							<PrevNext
 								{...this.props}
 								items={this.articleList}
