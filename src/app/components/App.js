@@ -61,7 +61,7 @@ class App extends React.Component {
 			 * Whether or not the poster image is loading
 			 * @type {Boolean}
 			 */
-			posterLoading: true
+			posterLoading: false
 		};
 
 		/**
@@ -286,9 +286,8 @@ class App extends React.Component {
 						</div>
 					</div>
 
-					<div className="handler">
+					<div ref="Handler" className="handler">
 						<RouteHandler
-							ref="Handler"
 							{...this.props}
 							selectedArticle={this.state.selectedArticle}
 							isReading={this.state.isReading}

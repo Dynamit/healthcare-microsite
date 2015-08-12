@@ -136,12 +136,16 @@
 	}
 }
 
-.measure {
-	max-width: 37.5em;
-	margin: 0 auto;
-}
-
 .article-body {
+	opacity: 1;
+	transform: scale(1), translateZ(0);
+	transition: opacity 300ms 200ms, transform 300ms;
+
+	.is-loading & {
+		opacity: 0.1;
+		transform: scale(0.98);
+	}
+
 	img {
 		max-width: 100%;
 		margin: 0.5em auto 1em;
@@ -152,6 +156,11 @@
 		text-decoration: underline;
 		color: color(orange);
 	}
+}
+
+.measure {
+	max-width: 37.5em;
+	margin: 0 auto;
 }
 
 .author {
@@ -166,6 +175,7 @@
 		height: 100%;
 		left: 0;
 		top: 0;
+		margin: 0 !important;
 	}
 
 	&-details {

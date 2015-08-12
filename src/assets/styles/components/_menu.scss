@@ -141,7 +141,6 @@
 		background-size: cover;
 
 		@include breakpoint {
-			@include darken-overlay;
 			position: absolute;
 			width: 100%;
 			height: 100%;

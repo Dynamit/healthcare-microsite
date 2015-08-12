@@ -8,10 +8,6 @@
 
 	@include breakpoint {
 		overflow: hidden;
-
-		&.is-reading {
-			overflow: auto;
-		}
 	}
 }
 
@@ -35,6 +31,10 @@
 
 	.is-reading & {
 		background-color: color(white);
+
+		@include breakpoint {
+			background-color: color(black);
+		}
 	}
 }
 
@@ -91,6 +91,8 @@
 		@include breakpoint {
 			height: 100%;
 			z-index: 0;
+			transform: none;
+			transition: opacity 300ms;
 		}
 	}
 
@@ -98,8 +100,13 @@
 		opacity: 0.3;
 
 		@include breakpoint {
-			transform: translate3d(0, 0.675em, -1.5em);
+			transform: translate3d(0, 0.6em, -0.875em);
 			transition: opacity 300ms 300ms, transform 300ms;
+
+			.is-reading & {
+				transform: none;
+				transition: opacity 300ms;
+			}
 		}
 	}
 
