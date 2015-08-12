@@ -2,7 +2,7 @@
 import assemble from 'fabricator-assemble';
 import autoprefixer from 'gulp-autoprefixer';
 import browserSync from 'browser-sync';
-import csso from 'gulp-csso';
+import minifyCss from 'gulp-minify-css';
 import data from './tasks/data';
 import del from 'del';
 import gulp from 'gulp';
@@ -108,7 +108,7 @@ gulp.task('styles', () => {
 		.pipe(autoprefixer({
 			browsers: config.styles.browsers
 		}))
-		.pipe(gulpif(!config.dev, csso()))
+		.pipe(gulpif(!config.dev, minifyCss({ zeroUnits: false })))
 		.pipe(gulp.dest(config.styles.dest))
 		.pipe(gulpif(config.dev, browserSync.reload({ stream: true })));
 });
