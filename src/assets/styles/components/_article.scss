@@ -139,10 +139,12 @@
 		margin: 0.5em auto 1em;
 	}
 
-	a,
-	a:visited {
-		text-decoration: underline;
-		color: color(orange);
+	a:not(.button) {
+		&,
+		&:visited {
+			text-decoration: underline;
+			color: color(orange);
+		}
 	}
 }
 
