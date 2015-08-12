@@ -53,7 +53,7 @@
 		right: 0;
 		top: 0;
 		opacity: 1;
-		transition: transform 300ms, opacity 300ms;
+		transition: transform 300ms;
 		transform: translate3d(100%, 0, 0);
 		z-index: 100;
 	}
@@ -65,7 +65,6 @@
 		@include breakpoint {
 			margin-top: 0;
 			transform: translate3d(0, 0, 0);
-			transition-delay: 200ms;
 		}
 	}
 }
@@ -108,7 +107,7 @@
 
 		@include breakpoint {
 			transform: translate3d(0, 0.6em, -0.875em);
-			transition: opacity 300ms 300ms, transform 300ms;
+			transition: opacity 300ms, transform 300ms;
 
 			.is-reading & {
 				transform: none;

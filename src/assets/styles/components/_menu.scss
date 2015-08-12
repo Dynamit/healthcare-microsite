@@ -65,10 +65,12 @@
 			background-color: color(overlay);
 			transform: translate3d(0, 0, 0);
 			transition: transform 300ms;
+			transition-delay: 250ms;
 
 			.is-reading & {
 				@include breakpoint {
 					transform: translate3d(0, 10em, 0);
+					transition-delay: 0ms;
 				}
 			}
 		}
@@ -241,7 +243,6 @@
 
 		.is-reading & {
 			right: 50%;
-			transition: right 300ms 150ms;
 		}
 	}
 
