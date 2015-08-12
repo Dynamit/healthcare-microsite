@@ -43,18 +43,29 @@
 	opacity: 0;
 	transition: opacity 300ms 400ms;
 
+	@include breakpoint {
+		position: absolute;
+		margin-top: 0;
+		width: 50%;
+		height: 100vh;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		right: 0;
+		top: 0;
+		opacity: 1;
+		transition: transform 300ms, opacity 300ms;
+		transform: translate3d(100%, 0, 0);
+		z-index: 100;
+	}
+
 	.is-reading & {
 		opacity: 1;
 		margin-top: $poster-reading-height;
 
 		@include breakpoint {
-			position: absolute;
 			margin-top: 0;
-			width: 50%;
-			height: 100vh;
-			overflow: auto;
-			right: 0;
-			top: 0;
+			transform: translate3d(0, 0, 0);
+			transition-delay: 200ms;
 		}
 	}
 }
@@ -72,10 +83,11 @@
 	overflow: hidden;
 	opacity: 1;
 	transition: height 300ms, opacity 300ms;
+	transform: translate3d(0, 0, 0);
 
 	@include breakpoint {
+		height: 100% !important;
 		opacity: 1;
-		transform: translate3d(0, 0, 0);
 		transform-style: preserve-3d;
 		transition: opacity 300ms, transform 300ms;
 	}
@@ -85,9 +97,8 @@
 		transition: height 300ms;
 
 		@include breakpoint {
-			height: 100%;
 			z-index: 0;
-			transform: none;
+			transform: translate3d(0, 0, 0);
 			transition: opacity 300ms;
 		}
 	}

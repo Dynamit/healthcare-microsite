@@ -63,13 +63,12 @@
 			bottom: 0;
 			padding: 0;
 			background-color: color(overlay);
-			opacity: 1;
-			transition: transform 300ms, opacity 300ms;
+			transform: translate3d(0, 0, 0);
+			transition: transform 300ms;
 
 			.is-reading & {
 				@include breakpoint {
-					opacity: 0;
-					transform: translateY(10em);
+					transform: translate3d(0, 10em, 0);
 				}
 			}
 		}
@@ -238,9 +237,11 @@
 		top: 0;
 		right: 0;
 		padding: 2em 1em;
+		transition: right 300ms;
 
 		.is-reading & {
 			right: 50%;
+			transition: right 300ms 150ms;
 		}
 	}
 
