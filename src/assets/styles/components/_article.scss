@@ -9,8 +9,8 @@
 	width: 100%;
 
 	@include breakpoint {
-		transform: translate3d(0, -34vh, 0);
-		transition: transform 300ms;
+		bottom: 34vh;
+		transition: bottom 300ms;
 		width: 50%;
 		padding: 1em 4em;
 		animation-name: none;
@@ -23,7 +23,6 @@
 			bottom: 0;
 			top: auto;
 			height: auto;
-			transform: translate3d(0, 0, 0);
 			padding: 2rem 3rem;
 		}
 	}
