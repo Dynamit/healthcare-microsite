@@ -192,7 +192,7 @@ export default (opts) => {
 					}));
 
 					// render route payload
-					tools.render(page, html);
+					tools.render(page, `<!doctype html>${html}`);
 
 					// resolve the promise
 					resolve();

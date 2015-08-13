@@ -72,6 +72,7 @@ class Layout extends React.Component {
 				<head>
 					<title>{this.props.head.title}</title>
 					<meta charSet="utf-8" />
+					<meta httpEquiv="x-ua-compatible" content="ie=edge" />
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					{meta}
 					<link rel="icon" type="image/x-icon" href="/favicon.ico" />
