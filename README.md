@@ -60,6 +60,7 @@ There is only one content type in this app: articles. They are written in markdo
 
 Here's a basic `.md` template:
 
+
 ```
 ---
 title: <Title>
@@ -76,6 +77,7 @@ abstract: <Abstract>
 Content
 
 ```
+
 
 The YAML front-matter is parsed and used as meta data for the article. The content body is parsed and rendered as HTML.
 
