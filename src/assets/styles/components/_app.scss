@@ -48,8 +48,6 @@
 		margin-top: 0;
 		width: 50%;
 		height: 100%;
-		overflow-x: hidden;
-		overflow-y: scroll;
 		right: 0;
 		top: 0;
 		opacity: 1;
@@ -65,6 +63,8 @@
 		@include breakpoint {
 			margin-top: 0;
 			transform: translate3d(0, 0, 0);
+			overflow-x: hidden;
+			overflow-y: scroll;
 		}
 	}
 }
