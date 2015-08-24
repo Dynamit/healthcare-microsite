@@ -56,7 +56,7 @@ class Article extends React.Component {
 				<div className="article-body measure">
 					<div className="mt-l pt-l mb">
 						<div className="author">
-							<img src={`/assets/images/${article.avatar}`} className="author-avatar" />
+							<img src={`/assets/images/${article.avatar}`} className="author-avatar" alt={article.author} />
 							<div className="author-details"><span className="author-name">{article.author}</span>&bull;<span className="author-date">{article.date.formatted}</span></div>
 						</div>
 					</div>

@@ -268,6 +268,7 @@ class App extends React.Component {
 						<ImageLoader
 							src={`/assets/images/${selectedArticleData.image}`}
 							onLoad={this._handlePosterLoad.bind(this)}
+							imgProps={{ alt: ' ' }}
 							wrapper={React.DOM.div} />
 						<div className="article-lead">
 							<h1 key={selectedArticleData.slug}>
