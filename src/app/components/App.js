@@ -266,7 +266,7 @@ class App extends React.Component {
 
 					<div className="header">
 						<div className="lockup" onClick={this._stopReading.bind(this)}	>
-							<Symbol href="/" id="dynamit-logo" />
+							<Symbol href="/" aria-label="Home" id="dynamit-logo" />
 						</div>
 						<div className="menu-toggle" onClick={this._toggleMenu.bind(this)}>
 							<span className="menu-toggle-label">More Articles</span>
