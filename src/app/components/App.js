@@ -264,6 +264,16 @@ class App extends React.Component {
 					onTouchStart={bodyCloseHandler}
 					onClick={bodyCloseHandler}>
 
+					<div className="header">
+						<div className="lockup" onClick={this._stopReading.bind(this)}	>
+							<Symbol href="/" id="dynamit-logo" />
+						</div>
+						<div className="menu-toggle" onClick={this._toggleMenu.bind(this)}>
+							<span className="menu-toggle-label">More Articles</span>
+							<Symbol id="menu-icon" />
+						</div>
+					</div>
+
 					<div className={posterClassNames}>
 						<ImageLoader
 							src={`/assets/images/${selectedArticleData.image}`}
@@ -285,16 +295,6 @@ class App extends React.Component {
 								items={this.articleList}
 								selectedArticle={this.state.selectedArticle}
 								handleSelectArticle={this._selectArticle.bind(this)} />
-						</div>
-					</div>
-
-					<div className="header">
-						<div className="lockup" onClick={this._stopReading.bind(this)}>
-							<Symbol id="dynamit-logo" />
-						</div>
-						<div className="menu-toggle" onClick={this._toggleMenu.bind(this)}>
-							<span className="menu-toggle-label">More Articles</span>
-							<Symbol id="menu-icon" />
 						</div>
 					</div>
 
