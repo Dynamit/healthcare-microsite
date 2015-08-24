@@ -47,7 +47,7 @@
 
 	.is-reading & {
 		z-index: -1;
-		
+
 		@include breakpoint {
 			height: 0;
 		}
@@ -105,6 +105,7 @@
 			}
 
 			&:hover,
+			&:active,
 			&.is-selected {
 				.menu-item-placeholder {
 					display: none;

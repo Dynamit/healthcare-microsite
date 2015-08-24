@@ -9,6 +9,16 @@ import classNames from 'classnames';
 
 class Menu extends React.Component {
 
+	_handleSelectArticle(slug, e) {
+		if (e.keyCode && e.keyCode === 13) {
+			this.props.handleSelectArticle(slug);
+		}
+
+		if (e.type === 'click') {
+			this.props.handleSelectArticle(slug);
+		}
+	}
+
 	render() {
 
 		let items = this.props.items;
@@ -53,11 +63,16 @@ class Menu extends React.Component {
 						let placeholder = formatPlaceholder(item, true);
 
 						return (
-							<li key={i} className={itemClasses} onClick={this.props.handleSelectArticle.bind(this, articles[i].slug)}>
+							<li key={i}
+								className={itemClasses}
+								onClick={this._handleSelectArticle.bind(this, articles[i].slug)}
+								onKeyDown={this._handleSelectArticle.bind(this, articles[i].slug)}
+								tabIndex="0">
 								<div className="menu-item-image" style={{ backgroundImage: `url(/assets/images/${articles[i].thumbnail})` }}></div>
 								<div className="menu-item-content">
 									<a href={`/article/${articles[i].slug}/`}
-										onClick={this.props.handleSelectArticle.bind(this, articles[i].slug)}
+										onClick={this._handleSelectArticle.bind(this, articles[i].slug)}
+										onKeyDown={this._handleSelectArticle.bind(this, articles[i].slug)}
 										className="menu-item-title">{articles[i].title}</a>
 									<div className="menu-item-date">{articles[i].date.formatted}</div>
 									<div className="menu-item-placeholder" dangerouslySetInnerHTML={{ __html: placeholder }} />
