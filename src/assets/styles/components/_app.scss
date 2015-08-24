@@ -90,7 +90,7 @@
 		background-color: transparent;
 		opacity: 1;
 		transform-style: preserve-3d;
-		transition: opacity 300ms, transform 300ms;
+		transition: opacity 300ms;
 	}
 
 	.is-reading & {
@@ -99,7 +99,6 @@
 
 		@include breakpoint {
 			z-index: 0;
-			transform: translate3d(0, 0, 0);
 			transition: opacity 300ms;
 		}
 	}
