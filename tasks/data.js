@@ -48,10 +48,13 @@ export default (fileGlob, destination, metaDestination) => {
 		// parse data
 		let data = yfm.data;
 
+		let date = moment(data.date).utc();
+		date = date.subtract(date.utcOffset());
+
 		// format the date
 		data.date = {
-			raw: data.date,
-			formatted: moment(data.date).format('D MMM YYYY')
+			raw: date.format(),
+			formatted: date.format('D MMM YYYY')
 		}
 
 		// save a slug

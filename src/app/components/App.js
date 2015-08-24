@@ -70,10 +70,10 @@ class App extends React.Component {
 		 */
 		this.articleList = [
 			'Introduction',
-			'2015 September 1',
-			'2015 September 10',
-			'2015 September 17',
-			'2015 October 2'
+			'2015 August 26',
+			'2015 September 9',
+			'2015 September 23',
+			'2015 October 7'
 		]
 
 		/**
