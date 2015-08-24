@@ -43,7 +43,7 @@ class App extends React.Component {
 			 * Whether or not the user is in reading mode
 			 * @type {Boolean}
 			 */
-			isReading: this.props.isReading,
+			isReading: this.props.isReading || false,
 
 			/**
 			 * Whether or not the (mobile) menu is open
@@ -133,6 +133,9 @@ class App extends React.Component {
 							this.setState({ isLoading: false })
 						}, this.duration);
 					}
+					if (!this.state.isNavigating && !this.state.isReading) {
+						React.findDOMNode(this.refs.ArticleLeadHeading).focus();
+					}
 				});
 			}, delay);
 
@@ -167,6 +170,7 @@ class App extends React.Component {
 		if (e) { e.preventDefault() }
 		this._scrollToTop().then(() => {
 			this.transitionTo(`/article/${this.props.data.meta[this.state.selectedArticle].slug}`);
+			React.findDOMNode(this.refs.ArticleLeadHeading).focus();
 		});
 	}
 
@@ -200,6 +204,10 @@ class App extends React.Component {
 		this.setState({
 			isNavigating: !this.state.isNavigating,
 			hasEngaged: true
+		}, () => {
+			if (this.state.isNavigating) {
+				React.findDOMNode(this.refs.Menu).focus();
+			}
 		});
 	}
 
@@ -243,7 +251,7 @@ class App extends React.Component {
 		let bodyCloseHandler = (this.state.isNavigating) ? this._toggleMenu.bind(this) : '';
 
 		return (
-			<div ref="App" className={containerClassNames}>
+			<div ref="App" className={containerClassNames} role="main">
 
 				<Helmet
 					title={this.props.title}
@@ -264,14 +272,14 @@ class App extends React.Component {
 					onTouchStart={bodyCloseHandler}
 					onClick={bodyCloseHandler}>
 
-					<div className="header">
+					<div className="header" role="banner">
 						<div className="lockup" onClick={this._stopReading.bind(this)}	>
 							<Symbol href="/" aria-label="Home" id="dynamit-logo" />
 						</div>
-						<div className="menu-toggle" onClick={this._toggleMenu.bind(this)}>
+						<a href="/" tabIndex="0" className="menu-toggle" onClick={this._toggleMenu.bind(this)}>
 							<span className="menu-toggle-label">More Articles</span>
-							<Symbol id="menu-icon" />
-						</div>
+							<Symbol id="menu-icon" containerNodeType="div" />
+						</a>
 					</div>
 
 					<div className={posterClassNames}>
@@ -282,7 +290,7 @@ class App extends React.Component {
 							wrapper={React.DOM.div} />
 						<div className="article-lead">
 							<h1 key={selectedArticleData.slug}>
-								<a href={`/article/${selectedArticleData.slug}/`} onClick={this._gotoArticle.bind(this)}>{selectedArticleData.title}</a>
+								<a href={`/article/${selectedArticleData.slug}/`} ref="ArticleLeadHeading" onClick={this._gotoArticle.bind(this)}>{selectedArticleData.title}</a>
 							</h1>
 							<div className="article-lead-extras">
 								<p>{selectedArticleData.abstract}</p>
@@ -298,7 +306,7 @@ class App extends React.Component {
 						</div>
 					</div>
 
-					<div ref="Handler" className="handler">
+					<div ref="Handler" className="handler" tabIndex="0">
 						<RouteHandler
 							{...this.props}
 							selectedArticle={this.state.selectedArticle}
@@ -312,6 +320,7 @@ class App extends React.Component {
 				</div>
 
 				<Menu
+					ref="Menu"
 					className={menuClassNames}
 					items={this.articleList}
 					selectedArticle={this.state.selectedArticle}

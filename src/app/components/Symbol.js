@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { clone, merge } from 'lodash';
+import { clone, merge, omit } from 'lodash';
 
 
 /**
@@ -62,6 +62,8 @@ class Symbol extends React.Component {
 		let containerProps = merge(clone(this.props), {
 			className: containerClassname
 		});
+
+		containerProps = omit(containerProps, 'id');
 
 		return (
 			React.createElement(this.props.containerNodeType, containerProps,

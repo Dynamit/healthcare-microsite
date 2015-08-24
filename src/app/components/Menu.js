@@ -40,7 +40,7 @@ class Menu extends React.Component {
 		};
 
 		return (
-			<div className={menuClassName}>
+			<div className={menuClassName} tabIndex="0" role="menu">
 
 				<div className="util-links">
 					<a href="http://dynamit.us1.list-manage.com/subscribe?u=a2efcfc6b4b404e84aca37fcd&id=8171c26a8e" target="_blank">Get Notified</a>
@@ -64,10 +64,11 @@ class Menu extends React.Component {
 
 						return (
 							<li key={i}
+								role="menuitem"
+								tabIndex="0"
 								className={itemClasses}
 								onClick={this._handleSelectArticle.bind(this, articles[i].slug)}
-								onKeyDown={this._handleSelectArticle.bind(this, articles[i].slug)}
-								tabIndex="0">
+								onKeyDown={this._handleSelectArticle.bind(this, articles[i].slug)}>
 								<div className="menu-item-image" style={{ backgroundImage: `url(/assets/images/${articles[i].thumbnail})` }}></div>
 								<div className="menu-item-content">
 									<a href={`/article/${articles[i].slug}/`}

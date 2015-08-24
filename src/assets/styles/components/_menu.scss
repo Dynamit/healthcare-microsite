@@ -46,8 +46,6 @@
 	}
 
 	.is-reading & {
-		z-index: -1;
-
 		@include breakpoint {
 			height: 0;
 		}

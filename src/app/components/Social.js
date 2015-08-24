@@ -72,16 +72,16 @@ class Social extends React.Component {
 		let facebook = Dialog.facebook(url);
 
 		return (
-			<div className="social">
+			<div className="social" aria-label="Social Share Links">
 				<ReactZeroClipboard
 					text={url}
 					onAfterCopy={this._handleCopyLink.bind(this)}
 					onReady={this._showCopyLink.bind(this)}>
 					<Symbol ref="copyLink" id="link-icon" aria-label={this.state.copyLabel} />
 				</ReactZeroClipboard>
-				<Symbol id="linkedin-icon" onClick={this._openDialog.bind(this, linkedIn)} />
-				<Symbol href={twitter.get()} id="twitter-icon" onClick={this._openDialog.bind(this, twitter)} />
-				<Symbol href={facebook.get()} id="facebook-icon" onClick={this._openDialog.bind(this, facebook)} />
+				<Symbol href={linkedIn.get()} id="linkedin-icon" onClick={this._openDialog.bind(this, linkedIn)} aria-label="Share on LinkedIn" />
+				<Symbol href={twitter.get()} id="twitter-icon" onClick={this._openDialog.bind(this, twitter)} aria-label="Share on Twitter" />
+				<Symbol href={facebook.get()} id="facebook-icon" onClick={this._openDialog.bind(this, facebook)} aria-label="Share on Facebook" />
 			</div>
 		);
 	}
