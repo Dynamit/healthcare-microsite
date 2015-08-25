@@ -1,11 +1,12 @@
 .social {
 	@include clearfix;
 	margin-bottom: 2em;
-	position: absolute;
-	top: 1.675em;
-	right: 1em;
+	position: relative;
+	margin-top: 1em;
 
 	@include breakpoint {
+		position: absolute;
+		margin-top: 0;
 		top: 2em;
 		right: 2em;
 	}

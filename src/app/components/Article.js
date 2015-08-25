@@ -83,12 +83,6 @@ class Article extends React.Component {
 				<Social {...this.props} />
 
 				<div className="article-body measure">
-					<div className="mt-l pt-l mb" aria-label="Article Author">
-						<div className="author">
-							<img src={`/assets/images/${article.avatar}`} className="author-avatar" alt={article.author} />
-							<div className="author-details"><span className="author-name">{article.author}</span>&bull;<span className="author-date">{article.date.formatted}</span></div>
-						</div>
-					</div>
 					<div tabIndex="0" aria-label="Article Body" dangerouslySetInnerHTML={{__html: article.content}} />
 					<PrevNext
 						{...this.props}
