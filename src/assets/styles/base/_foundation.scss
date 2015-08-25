@@ -8,9 +8,21 @@ html {
 	box-sizing: inherit;
 }
 
-*:focus,
-*:active {
-	outline: thin dotted;
+a[href],
+area[href],
+input:not([disabled]),
+select:not([disabled]),
+textarea:not([disabled]),
+button:not([disabled]),
+iframe,
+[tabindex],
+[contentEditable=true] {
+    &:not([tabindex='-1']) {
+		&:focus,
+		&:active {
+			outline: thin dotted;
+		}
+    }
 }
 
 html,

@@ -129,10 +129,16 @@
 	transform: scale(1), translateZ(0);
 	transition: opacity 300ms 200ms, transform 300ms;
 	line-height: 1.5;
+	outline: none;
 
 	.is-loading & {
 		opacity: 0.1;
 		transform: scale(0.98);
+	}
+
+	> div,
+	p {
+		outline: none !important;
 	}
 
 	img {

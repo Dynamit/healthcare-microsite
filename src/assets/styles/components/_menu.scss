@@ -27,6 +27,7 @@
 	overflow: hidden;
 	height: 100%;
 	background-color: color(light-gray);
+	color: color(white);
 
 	@include breakpoint {
 		z-index: 100;
