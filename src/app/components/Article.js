@@ -49,10 +49,15 @@ class Article extends React.Component {
 	}
 
 	componentDidUpdate() {
-		let target = React.findDOMNode(this.refs.Article);
-		setTimeout(() => {
-			target.focus();
-		}, this.props.duration)
+
+		// if on larger screen, focus the article upon update
+		if (this.props.breakpoint === 'large') {
+			let target = React.findDOMNode(this.refs.Article);
+			setTimeout(() => {
+				target.focus();
+			}, this.props.duration);
+		}
+
 	}
 
 	render () {

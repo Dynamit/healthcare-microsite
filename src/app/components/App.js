@@ -61,7 +61,12 @@ class App extends React.Component {
 			 * Whether or not the poster image is loading
 			 * @type {Boolean}
 			 */
-			posterLoading: false
+			posterLoading: false,
+
+			/**
+			 * Style breakpoint, captured from body:before content
+			 */
+			breakpoint: ''
 		};
 
 		/**
@@ -85,6 +90,22 @@ class App extends React.Component {
 	static fetchData() {
 		return api.get('/article.json');
 	}
+
+
+	componentWillMount() {
+		window.addEventListener('resize', this._refreshBreakpoint.bind(this));
+		this._refreshBreakpoint();
+	}
+
+
+	/**
+	 * Get breakpoint value from styles
+	 */
+	_refreshBreakpoint() {
+		let bp = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
+		this.setState({ breakpoint: bp });
+	}
+
 
 	/**
 	 * Set an article as "selected".
@@ -303,6 +324,7 @@ class App extends React.Component {
 					<div ref="Handler" className="handler">
 						<RouteHandler
 							{...this.props}
+							breakpoint={this.state.breakpoint}
 							selectedArticle={this.state.selectedArticle}
 							isReading={this.state.isReading}
 							handleSelectArticle={this._selectArticle.bind(this)}
