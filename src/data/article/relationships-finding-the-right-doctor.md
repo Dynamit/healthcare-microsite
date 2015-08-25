@@ -8,6 +8,8 @@ thumbnail: poster-01-thumb.jpg
 abstract: Much is at stake in the initial phase of the healthcare consumer decision journey. Lifelong patients are won or lost based on the ability to connect them with the right doctor. Learn how digital tools can help make the right doctor-patient connections.
 ---
 
+## Enhancing the Healthcare Consumer Journey
+
 At Dynamit, we believe digital can enhance every step of the healthcare consumer’s journey. To understand what that means, we first have to outline that journey. While not every healthcare consumer will follow the exact same path, the traditional journey consists of the following:
 
 ![The five phases of the healthcare consumer journey](/assets/images/healthcare-journey.jpg)
