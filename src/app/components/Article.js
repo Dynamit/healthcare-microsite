@@ -80,7 +80,9 @@ class Article extends React.Component {
 
 				<Button href="/" onClick={this.props.handleStopReading} className="hide-button">Hide</Button>
 
-				<Social {...this.props} />
+				<div className="measure">
+					<Social {...this.props} />
+				</div>
 
 				<div className="article-body measure">
 					<div tabIndex="0" aria-label="Article Body" dangerouslySetInnerHTML={{__html: article.content}} />
