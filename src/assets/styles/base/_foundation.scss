@@ -8,6 +8,11 @@ html {
 	box-sizing: inherit;
 }
 
+*:focus,
+*:active {
+	outline: thin dotted;
+}
+
 html,
 body {
 	height: 100%;
