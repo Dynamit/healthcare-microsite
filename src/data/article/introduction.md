@@ -26,7 +26,7 @@ In this four part series, we focus on digital ideas that can shape the healthcar
 
 ## What We’ll Cover
 
-Over the next eight weeks, we will release one article every other week focused on a different aspect of healthcare.
+Over the next several weeks, we will release one article every other week focused on a different aspect of healthcare.
 
 We start today with a look at how users find doctors and how we might enhance that process in a way that’s more meaningful for both the patient and the provider.
 
