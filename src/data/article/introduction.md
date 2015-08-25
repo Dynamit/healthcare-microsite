@@ -5,7 +5,7 @@ avatar: jamer.jpg
 date: 2015-08-26
 image: poster-00.jpg
 thumbnail: poster-00-thumb.jpg
-abstract: Healthcare is ripe for a digital revolution, but it’s also faced with challenges that make digital transformation uniquely difficult.
+abstract: Healthcare is ripe for a digital revolution, but it’s also faced with challenges that make digital transformation uniquely difficult. In this four part series, we explore some of the biggest challenges and opportunities for using digital to transform the healthcare consumer experience.
 ---
 
 ## Users First
