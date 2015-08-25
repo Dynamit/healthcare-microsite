@@ -76,12 +76,6 @@ class App extends React.Component {
 			'2015 October 7'
 		]
 
-		/**
-		 * Animation duration/delay
-		 * @type {Number}
-		 */
-		this.duration = 300;
-
 	}
 
 	/**
@@ -121,7 +115,7 @@ class App extends React.Component {
 		this.setState(state, () => {
 
 			// if should animate and menu is closed, delay, else, no delay
-			let delay = (animate) ? this.duration : 0;
+			let delay = (animate) ? this.props.duration : 0;
 
 			setTimeout(() => {
 				this.setState({ selectedArticle: key, isNavigating: false }, () => {
@@ -131,7 +125,7 @@ class App extends React.Component {
 					if (animate) {
 						setTimeout(() => {
 							this.setState({ isLoading: false })
-						}, this.duration);
+						}, delay);
 					}
 					if (!this.state.isNavigating && !this.state.isReading) {
 						React.findDOMNode(this.refs.ArticleLeadHeading).focus();
@@ -306,7 +300,7 @@ class App extends React.Component {
 						</div>
 					</div>
 
-					<div ref="Handler" className="handler" tabIndex="0">
+					<div ref="Handler" className="handler">
 						<RouteHandler
 							{...this.props}
 							selectedArticle={this.state.selectedArticle}
@@ -342,7 +336,8 @@ mixin.onClass(App, Navigation);
 App.defaultProps = {
 	title: 'Healthcare | Dynamit',
 	description: 'Digital ideas for shaping the healthcare consumer experience in the areas of relationships, access, communication, and adoption.',
-	baseurl: 'http://healthcare.dynamit.com'
+	baseurl: 'http://healthcare.dynamit.com',
+	duration: 300
 }
 
 export default App;

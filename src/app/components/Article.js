@@ -21,9 +21,38 @@ class Article extends React.Component {
 		return api.get(`/article/${params.slug}.json`);
 	}
 
+
+	/**
+	 * Close article when pressing `ESC` or `BACKSPACE`
+	 */
+	_closeArticle(e) {
+		var keys = [27, 8];
+		if (keys.indexOf(e.which) > -1) {
+			e.preventDefault();
+			this.props.handleStopReading();
+		}
+	}
+
 	componentDidMount() {
+
 		// start reading once the component mounts
 		this.props.handleStartReading();
+
+		// add event listener for keyboard
+		document.addEventListener('keydown', this._closeArticle.bind(this));
+
+	}
+
+	componentWillUnmount() {
+		// remove keyboard listener
+		document.removeEventListener('keydown', this._closeArticle.bind(this))
+	}
+
+	componentDidUpdate() {
+		let target = React.findDOMNode(this.refs.Article);
+		setTimeout(() => {
+			target.focus();
+		}, this.props.duration)
 	}
 
 	render () {
@@ -60,7 +89,7 @@ class Article extends React.Component {
 							<div className="author-details"><span className="author-name">{article.author}</span>&bull;<span className="author-date">{article.date.formatted}</span></div>
 						</div>
 					</div>
-					<div aria-label="Article Body" dangerouslySetInnerHTML={{__html: article.content}} />
+					<div tabIndex="0" aria-label="Article Body" dangerouslySetInnerHTML={{__html: article.content}} />
 					<PrevNext
 						{...this.props}
 						items={this.articleList}

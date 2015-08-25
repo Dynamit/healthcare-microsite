@@ -10,12 +10,13 @@ import classNames from 'classnames';
 class Menu extends React.Component {
 
 	_handleSelectArticle(slug, e) {
+
 		if (e.keyCode && e.keyCode === 13) {
 			this.props.handleSelectArticle(slug);
 		}
 
 		if (e.type === 'click') {
-			this.props.handleSelectArticle(slug);
+			this.props.handleSelectArticle(slug, e, true);
 		}
 	}
 
@@ -66,6 +67,7 @@ class Menu extends React.Component {
 							<li key={i}
 								role="menuitem"
 								tabIndex="0"
+								aria-label={articles[i].title}
 								className={itemClasses}
 								onClick={this._handleSelectArticle.bind(this, articles[i].slug)}
 								onKeyDown={this._handleSelectArticle.bind(this, articles[i].slug)}>
