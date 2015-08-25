@@ -13,7 +13,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import { assign, sortBy } from 'lodash';
 
-const md = markdown({ html: true, linkify: true });
+const md = markdown({ html: true });
 
 
 /**
