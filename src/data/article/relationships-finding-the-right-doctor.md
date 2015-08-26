@@ -24,7 +24,7 @@ This is also a high value decision for the provider. This could lead to a negati
 
 For both the provider and the consumer, a single system with a highly-trusted care coordinator has many advantages. Staying in a single system benefits a patient in terms of convenience, continuity of care, and consistency of experience. While it’s not always easy for a patient to move around within a single system, it’s even more challenging when they want to move data between systems.
 
-For the provider, in addition to the financial benefits of having a lifelong patient, there are also care quality benefits. By having someone stay within a single system, all of their data is collected together in a way tells a better story for the provider.
+For the provider, in addition to the financial benefits of having a lifelong patient, there are also care quality benefits. By having someone stay within a single system, all of their data is collected together in a way that tells a better story for the provider.
 
 ## Making Research More Valuable
 
