@@ -82,10 +82,10 @@ class Layout extends React.Component {
 					{link}
 					<script src="http://use.typekit.net/omf4gip.js"></script>
 					<script dangerouslySetInnerHTML={{__html: this.loadFonts}}></script>
+					<script dangerouslySetInnerHTML={{__html: this.GA }}></script>
 				</head>
 				<body dangerouslySetInnerHTML={{ __html: this.props.markup }} />
 				<script src="/assets/scripts/main.js" async></script>
-				<script dangerouslySetInnerHTML={{__html: this.GA }}></script>
 			</html>
 		);
 	}
