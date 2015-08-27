@@ -11,6 +11,7 @@ require('babel-core/polyfill');
 // for Chrome Dev Tools support
 window.React = React;
 
+
 // dispatch the router
 Router.run(routes, Router.HistoryLocation, (Handler, state) => {
 
@@ -29,6 +30,9 @@ Router.run(routes, Router.HistoryLocation, (Handler, state) => {
 
 		// render route payload
 		React.render(routePayload, document.body);
+
+		// fire ga event
+		ga('send', 'pageview', state.path);
 
 	});
 
