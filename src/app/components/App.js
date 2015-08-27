@@ -93,6 +93,7 @@ class App extends React.Component {
 
 
 	componentDidMount() {
+		// add breakpoint listener
 		window.addEventListener('resize', this._refreshBreakpoint.bind(this));
 		this._refreshBreakpoint();
 	}
