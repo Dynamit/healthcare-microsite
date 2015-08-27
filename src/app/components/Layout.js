@@ -16,7 +16,15 @@ class Layout extends React.Component {
 
 		this.loadFonts = `!function(e){var t=3e3;window.sessionStorage&&"false"===sessionStorage.getItem("useTypekit")&&(t=0);var s,a={kitId:'${kitId}',scriptTimeout:t},i=e.documentElement,o=setTimeout(function(){i.className=i.className.replace(/\bwf-loading\b/g,"")+"wf-inactive",window.sessionStorage&&sessionStorage.setItem("useTypekit","false")},a.scriptTimeout),n=e.createElement("script"),c=!1,r=e.getElementsByTagName("script")[0];i.className+="wf-loading",n.src="//use.typekit.net/"+a.kitId+".js",n.async=!0,n.onload=n.onreadystatechange=function(){if(s=this.readyState,!(c||s&&"complete"!=s&&"loaded"!=s)){c=!0,clearTimeout(o);try{Typekit.load(a)}catch(e){}}},r.parentNode.insertBefore(n,r)}(document);`;
 
-		this.GA = `(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-23605672-3','auto');ga('send','page view');`;
+		this.GA = `
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-23605672-3', 'auto');
+			ga('send', 'pageview');
+		`;
 
 	}
 
