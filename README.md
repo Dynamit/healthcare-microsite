@@ -4,9 +4,11 @@
 
 ## Overview
 
-TODO about Dynamit and healthcare.
+Dynamit has collaborated with clients in the healthcare industry for nearly a decade. We have led strategic planning projects, data science engagements, and crafted both internal and consumer-facing web and mobile applications for physicians, research professionals, health systems, and associations.
 
-We decided to have a little fun and try something new with this site, so we decided to build it as an pre-rendered single page application (SPA) with [React](http://facebook.github.io/react/). SPAs are powerful because they allow you to de-couple the presentation layer (front-end) from the data layer (back-end). We think this can have a tremendous impact on how projects are architected, so we wanted to tinker to find a solution that worked. This is one of our experiments.
+We’ve done a tremendous amount of research on the industry and wanted to share some of our learnings and ideas with a broader audience.
+
+We also wanted to have a little fun and try something new with out Healthcare insights site.  We built the site as an pre-rendered single page application (SPA) with [React](http://facebook.github.io/react/). SPAs are powerful because they allow you to de-couple the presentation layer (front-end) from the data layer (back-end). We think this can have a tremendous impact on how projects are architected, so we wanted to tinker to find a solution that worked. This is one of our experiments.
 
 ### Architecture
 
