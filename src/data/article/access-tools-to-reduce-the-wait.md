@@ -98,4 +98,4 @@ We are starting to see the beginnings of a sea change, where patients are empowe
 
 In our first post, we tackled a key aspect of the Research phase: finding a better doctor. Today, we started to unpack access in the Booking phase. From here, we’ll focus on ideas that span the consumer journey. In our next post, we’ll look at digital tools and ideas that can help bridge the health literacy gap, and improve both doctor-patient and internal health system communications.
 
-Be sure to <a href=“http://dynamit.us1.list-manage.com/subscribe?u=a2efcfc6b4b404e84aca37fcd&id=8171c26a8e” target=“_blank”>subscribe to be notified</a> when the next post is available.
+Be sure to <a href="http://dynamit.us1.list-manage.com/subscribe?u=a2efcfc6b4b404e84aca37fcd&id=8171c26a8e" target="_blank">subscribe to be notified</a> when the next post is available.
