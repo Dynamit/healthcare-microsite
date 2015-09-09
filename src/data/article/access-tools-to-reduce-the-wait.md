@@ -1,10 +1,10 @@
-—
-title: “Access: Tools to Reduce the Wait”
+---
+title: "Access: Tools to Reduce the Wait"
 date: 2015-09-09
 image: poster-02.jpg
 thumbnail: poster-02-thumb.jpg
-abstract: Sometimes the hardest part of healthcare is just making an appointment. Technology and shifts in perspective can help set the tone for a better patient experience before a patient is ever seen.
-—
+abstract: "Sometimes the hardest part of healthcare is just making an appointment. Technology and shifts in perspective can help set the tone for a better patient experience before a patient is ever seen."
+---
 
 ## The Two-headed Beast: Booking and Availability
 
