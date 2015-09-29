@@ -70,7 +70,7 @@ In the modern-health landscape, doctor and patient roles are evolving. As the ba
 
 There is one more type of communication which needs to be perfected for all of this to work, intrasystem communication. Practitioners and staff members need to communicate with one another and share information in a safe, secure way.
 
-As healthcare demands increase without a comporable increase in supply, practicioners conintue to squeeze more patients onto their schedules. If these practioners see more people — often for shorter time periods — and then send patients off to care for themselves, doctors and other medical staff need to better prepared to make the most out of each appointment. They need better preparation and better data sharing. They need to come into each appointment with a plan and a complete data set.
+As healthcare demands increase without a comparable increase in supply, practicioners continue to squeeze more patients onto their schedules. If these practioners see more people — often for shorter time periods — and then send patients off to care for themselves, doctors and other medical staff need to better prepared to make the most out of each appointment. They need better preparation and better data sharing. They need to come into each appointment with a plan and a complete data set.
 
 The problem in most systems today, is that the tools for sharing information and communicating across teams have not evolved at the same pace as those found outside the healthcare industry. Instead, patients find themselves repeating the same information to each person they encounter. Some of this is for security, but often it flows from a lack of communication.
 
