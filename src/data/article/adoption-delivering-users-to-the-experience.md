@@ -1,10 +1,10 @@
-—
-title: Adoption: Delivering Users to the Experience”
+---
+title: "Adoption: Delivering Users to the Experience"
 date: 2015-10-07
 image: poster-04.jpg
 thumbnail: poster-04-thumb.jpg
 abstract: Digital has a long way to go toward its transformation of the healthcare consumer experience. We've explored aspects of what can change in our first three posts. In our final post, we look at why change has been slow and what you can do about it.
-—
+---
 
 
 ## User, Meet Experience
